@@ -1,0 +1,58 @@
+<script lang="ts">
+  import { DefaultTransaction } from '../constants/defaults';
+  import type { Transaction } from '../types/common';
+  import Add from '../assets/icons/Add.svelte';
+  import TransactionRow from './TransactionRow.svelte';
+  import Card from './Card/Card.svelte';
+  import CardHeader from './Card/CardHeader.svelte';
+  import Table from './Table/Table.svelte';
+
+  export let title = '';
+  export let totalSum = 0;
+  export let transactions: Transaction[];
+  export let save = () => {};
+  let cmps = [];
+  $: cmps = cmps.filter((el) => el);
+
+  const onChange = (index: number) => (row: Transaction) => {
+    transactions[index] = row;
+    save();
+  };
+
+  const addRow = () => {
+    transactions = [...transactions, DefaultTransaction];
+    save();
+  };
+
+  const removeRow = (index: number) => {
+    transactions = transactions.filter((_, idx) => idx !== index);
+    save();
+  };
+</script>
+
+<Card>
+  <CardHeader>
+    <p class="text-lg sm:text-xl">
+      {title}{' '}
+      <span class="text-color-500">| </span>
+      <span class="text-blue-500 font-semibold">{totalSum.toLocaleString()} ₽</span>
+    </p>
+    <button
+      type="button"
+      class="w-6 text-blue-500 hover:opacity-75 active:opacity-50 transition-all"
+      on:click={addRow}
+    >
+      <Add />
+    </button>
+  </CardHeader>
+  <Table>
+    {#each transactions as row, index}
+      <TransactionRow
+        {...row}
+        bind:this={cmps[index]}
+        onChange={onChange(index)}
+        onRemoveRow={() => removeRow(index)}
+      />
+    {/each}
+  </Table>
+</Card>
