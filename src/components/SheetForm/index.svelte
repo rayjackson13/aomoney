@@ -1,6 +1,7 @@
 <script lang="ts">
   import { getContext } from 'svelte';
   import Portal from 'svelte-portal';
+  import debounce from 'lodash/debounce';
   
   import type { App } from 'app';
   import Edit from 'assets/icons/Edit.svelte';
@@ -17,15 +18,19 @@
   export let data: TransactionSheet | undefined;
 
   const { user } = getContext<App.Session>('session');
+
   $: viewer = new TransactionViewer(data, user);
   $: sheet = viewer.sheet;
   $: summary = viewer.summary;
+
   const onNameKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter') e.preventDefault();
   };
+
+  const onSave = debounce(() => viewer.save(), 200);
 </script>
 
-<form on:input={viewer.save} autocomplete="disabled" class="mb-8 text-gray-800">
+<form on:input={onSave} autocomplete="disabled" class="mb-8 text-gray-800">
   <Portal target="#header-title-portal">
     <div class="relative flex items-center">
       <span

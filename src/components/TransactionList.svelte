@@ -15,7 +15,6 @@
 
   const onChange = (index: number) => (row: Transaction) => {
     transactions[index] = row;
-    save();
   };
 
   const addRow = () => {
