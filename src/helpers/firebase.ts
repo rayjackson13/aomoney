@@ -89,7 +89,36 @@ export class FirebaseHelper {
     return array;
   };
 
-  static savePost = async (post: TransactionSheet) => {
+  static getPost = async (user: UserInfo, id: string): Promise<TransactionSheet | undefined> => {
+    const ref = FS.doc(this.db, 'sheets', id);
 
+    try {
+      const result = await FS.getDoc(ref);
+      return result.data() as TransactionSheet;
+    } catch (e) {
+      console.error(e);
+      return undefined;
+    }
+  };
+
+  static getPosts = async (user: UserInfo): Promise<TransactionSheet[]> => {
+    try {
+      const q = FS.query(FS.collection(this.db, 'sheets'), FS.where('userId', '==', user.id));
+      const snapshot = await FS.getDocs(q);
+      return this.snapshotToArray(snapshot) as TransactionSheet[];
+    } catch (e) {
+      console.error(e);
+      return [];
+    }
+  };
+
+  static savePost = async (user: UserInfo, post: TransactionSheet) => {
+    const ref = FS.doc(this.db, 'sheets', post.id.toString());
+
+    try {
+      await FS.setDoc(ref, { ...post, userId: user.id});
+    } catch (e) {
+      console.error('Error adding document:', e);
+    }
   };
 }

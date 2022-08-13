@@ -1,18 +1,22 @@
 <script lang="ts" context="module">
   import type { LoadEvent, LoadOutput } from "@sveltejs/kit";
 
-  export const ssr = false;
-  export const handle = async ({ params }: LoadEvent): Promise<LoadOutput> => ({
-    props: {
-      id: params.id,
-    }
-  });
+  import type { App } from "app";
+  import { FirebaseHelper } from "helpers/firebase";
+
+  export const load = async ({ session, params }: LoadEvent): Promise<LoadOutput> => {
+    const { user } = session as App.Session;
+    const sheet = await FirebaseHelper.getPost(user, params.id);
+
+    return { props: { sheet } };
+  };
 </script>
 
 <script lang="ts">
-  import SheetPage from "../../components/SheetPage.svelte";
+  import SheetPage from "components/SheetPage.svelte";
+import type { TransactionSheet } from "types/common";
 
-  const id = location.pathname.split('/sheet/').at(-1);
+  export let sheet: TransactionSheet | undefined;
 </script>
 
-<SheetPage {id} />
+<SheetPage {sheet} />

@@ -14,8 +14,8 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
 
-  import { FirebaseHelper } from '../helpers/firebase';
-  import LoginForm from '../components/Auth/LoginForm.svelte';
+  import { FirebaseHelper } from 'helpers/firebase';
+  import LoginForm from 'components/Auth/LoginForm.svelte';
 
   const onLogin = async () => {
     const callback = () => goto('/');

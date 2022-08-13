@@ -1,4 +1,4 @@
-import UserType from './types/common';
+import UserInfo from 'types/common';
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
@@ -6,7 +6,7 @@ import UserType from './types/common';
 declare namespace App {
   interface Locals {
     sessionId: string,
-    user: UserType,
+    user: UserInfo,
   }
 
   // interface Platform {}
@@ -16,7 +16,7 @@ declare namespace App {
   // interface PublicEnv {}
 
   interface Session {
-    user: UserType,
+    user: UserInfo,
   }
 
   // interface Stuff {}

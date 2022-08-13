@@ -47,3 +47,7 @@ export type UserInfo = {
   avatar: string;
   accessToken: string;
 };
+
+export type UserContext = { 
+  user: UserInfo;
+};

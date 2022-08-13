@@ -1,8 +1,9 @@
-import { goto } from "$app/navigation";
 import getTime from "date-fns/getTime";
 import intervalToDuration from "date-fns/intervalToDuration";
+import { FirebaseHelper } from "helpers/firebase";
 
-import type { SheetDraft, Transaction, TransactionSheet } from "types/common";
+import type { SheetDraft, Transaction, TransactionSheet, UserInfo } from "types/common";
+
 
 const DefaultTransaction: Transaction = {
   title: '',
@@ -11,8 +12,11 @@ const DefaultTransaction: Transaction = {
 
 export class TransactionViewer {
   sheet: SheetDraft;
+  user: UserInfo;
 
-  constructor (data: TransactionSheet | undefined) {
+  constructor (data: TransactionSheet | undefined, user: UserInfo) {
+    this.user = user;
+
     if (!data) {
       this.sheet = this.createTransactionSheet();
       return;
@@ -61,7 +65,8 @@ export class TransactionViewer {
     return duration.days || 1;
   };
 
-  save = () => {
+  save = async () => {
+    console.log(this.user);
     const timestamp = getTime(new Date());
     if (!this.sheet.id) {
       this.sheet.id = timestamp;
@@ -71,12 +76,8 @@ export class TransactionViewer {
       history.replaceState(undefined, '', `/sheet/${timestamp}`);
     }
 
-    localStorage.setItem(
-      `sheet-${this.sheet.id}`,
-      JSON.stringify({
-        ...this.sheet,
-        updatedAt: timestamp
-      } as TransactionSheet)
-    );
+    this.sheet.updatedAt = timestamp;
+
+    await FirebaseHelper.savePost(this.user, this.sheet as TransactionSheet);
   };
 };

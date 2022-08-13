@@ -1,6 +1,8 @@
 <script lang="ts">
+  import { getContext } from 'svelte';
   import Portal from 'svelte-portal';
-
+  
+  import type { App } from 'app';
   import Edit from 'assets/icons/Edit.svelte';
   import DatePicker from 'components/DatePicker.svelte';
   import TransactionList from 'components/TransactionList.svelte';
@@ -14,7 +16,8 @@
 
   export let data: TransactionSheet | undefined;
 
-  $: viewer = new TransactionViewer(data);
+  const { user } = getContext<App.Session>('session');
+  $: viewer = new TransactionViewer(data, user);
   $: sheet = viewer.sheet;
   $: summary = viewer.summary;
   const onNameKeyDown = (e: KeyboardEvent) => {

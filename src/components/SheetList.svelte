@@ -1,26 +1,20 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { getContext } from 'svelte';
+  
+  import type { App } from 'app';
+  import { FirebaseHelper } from 'helpers/firebase';
+  import type { TransactionSheet } from 'types/common';
 
-  import type { TransactionSheet } from '../types/common';
   import Grid from './Grid.svelte';
   import NewSheetButton from './NewSheetButton.svelte';
   import SheetButton from './SheetButton.svelte';
 
-  let list: TransactionSheet[] = [];
+  const { user } = getContext<App.Session>('session');
+  export let list: TransactionSheet[] = [];
 
-  const updateList = () => {
-    const keys = Object.keys(localStorage).filter((val) => val.match('sheet-'));
-    const items = keys.map((key) => {
-      const item = localStorage.getItem(key);
-      return JSON.parse(item || '{}') as TransactionSheet;
-    });
-    items.sort((item1, item2) => item2.id - item1.id);
-    list = items;
+  const updateList = async () => {
+    list = await FirebaseHelper.getPosts(user);
   };
-
-  onMount(() => {
-    updateList();
-  });
 </script>
 
 <div class="container mx-auto">
