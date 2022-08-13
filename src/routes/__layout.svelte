@@ -25,7 +25,9 @@
   setContext('session', session);
 </script>
 
-<slot session={session} />
+<slot />
+
+<div id="modal-portal" />
 
 <style>
   @import '../app.css';

@@ -121,4 +121,14 @@ export class FirebaseHelper {
       console.error('Error adding document:', e);
     }
   };
+
+  static deletePost = async (user: UserInfo, postId: string) => {
+    const ref = FS.doc(this.db, 'sheets', postId);
+
+    try {
+      await FS.deleteDoc(ref);
+    } catch (e) {
+      console.error('Error deleting document:', e);
+    }
+  };
 }

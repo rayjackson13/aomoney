@@ -24,7 +24,7 @@
   };
 </script>
 
-<header class="bg-blue-500 shadow px-10 py-3 text-white ${classes}">
+<header class="sticky top-0 bg-blue-500 shadow px-10 py-3 text-white ${classes}">
   <div class="mx-auto flex items-center relative">
     <div class="flex items-center">
       {#if hasBackButton}
