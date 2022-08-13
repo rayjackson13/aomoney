@@ -1,11 +1,12 @@
 <script lang="ts">
-  import type { TransactionSheet } from '../types/common';
+  import type { SheetDraft } from 'types/common';
+
   import Column from './Table/Column.svelte';
   import Row from './Table/Row.svelte';
   import Table from './Table/Table.svelte';
   import Input from './Input.svelte';
 
-  export let sheet: TransactionSheet;
+  export let sheet: SheetDraft;
   const inputClass = 'border-0 w-full';
 </script>
 
