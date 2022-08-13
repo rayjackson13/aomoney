@@ -66,7 +66,6 @@ export class TransactionViewer {
   };
 
   save = async () => {
-    console.log(this.user);
     const timestamp = getTime(new Date());
     if (!this.sheet.id) {
       this.sheet.id = timestamp;

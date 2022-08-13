@@ -5,18 +5,18 @@ import type { App } from "./app";
 import { FirebaseHelper } from "./helpers/firebase";
 
 export const handle: Handle = async ({ event, resolve }) => {
+  FirebaseHelper.initialize();
   const { headers } = event.request;
-  const cookies = Cookie.parse(headers.get('cookie') || '');
-  
-  (event.locals as App.Locals).sessionId = cookies.sessionId;
+  const { sessionId = undefined } = Cookie.parse(headers.get('cookie') || '');
+  if (sessionId) {
+    const user = await FirebaseHelper.findUser(sessionId);
+    (event.locals as App.Locals).user = user;
+  }
+
   return resolve(event);
 };
 
 export const getSession: GetSession = async (event) => {
-  const { sessionId } = event.locals as App.Locals;
-  FirebaseHelper.initialize();
-  const user = await FirebaseHelper.findUser(sessionId);
-  if (!user)  return {};
-  
-  return { user };
+  const { user } = event.locals as App.Locals;
+  return user ? { user } : {};
 };

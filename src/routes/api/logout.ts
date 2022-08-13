@@ -1,6 +1,5 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import * as Cookie from 'cookie';
-import parse from "date-fns/parse";
 
 export const POST: RequestHandler = async () => {
   const headers = {
@@ -8,7 +7,7 @@ export const POST: RequestHandler = async () => {
       httpOnly: true,
       sameSite: 'lax',
       path: '/',
-      expires: parse('1970-01-01', 'yyyy-MM-dd', new Date()),
+      expires: new Date(0),
     })
   };
 

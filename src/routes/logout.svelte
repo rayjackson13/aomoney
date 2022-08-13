@@ -1,8 +1,9 @@
 <script context="module" lang="ts">
   import type { Load } from "@sveltejs/kit";
-import type { App } from "app";
 
-  export const load: Load = async ({ session }) => {
+  import type { App } from "app";
+
+  export const load: Load = async ({ fetch, session }) => {
     if (!(session as App.Session).user) {
       return { status: 302, redirect: 'auth' };
     }
@@ -23,4 +24,4 @@ import type { App } from "app";
   };
 </script>
 
-Redirecting...
+<p>Redirecting...</p>

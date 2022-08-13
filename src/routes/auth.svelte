@@ -12,13 +12,11 @@
 </script>
 
 <script lang="ts">
-  import { goto } from "$app/navigation";
-
   import { FirebaseHelper } from 'helpers/firebase';
   import LoginForm from 'components/Auth/LoginForm.svelte';
 
   const onLogin = async () => {
-    const callback = () => goto('/');
+    const callback = () => location.pathname = '/dashboard';
     await FirebaseHelper.signIn(callback);
   };
 </script>

@@ -53,7 +53,11 @@
           <i class="w-4 mr-2"><Dashboard /></i>
           Dashboard
         </a>
-        <a href="/logout" class="flex items-center justify-center w-full h-10 rounded-lg hover:opacity-50 transition-opacity" transition:scale|local>
+        <a
+          href="/logout"
+          class="flex items-center justify-center w-full h-10 rounded-lg hover:opacity-50 transition-opacity"
+          target="_self"
+          transition:scale|local>
           <i class="w-4 mr-2"><Logout /></i>
           Log out
         </a>

@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   import type { Load } from "@sveltejs/kit";
-  
+
   import type { App } from "app";
   import { FirebaseHelper } from "helpers/firebase";
   import type { TransactionSheet } from "types/common";
@@ -23,7 +23,6 @@
   import SheetList from '../components/SheetList.svelte';
 
   export let list: TransactionSheet[];
-  console.log(list);
 </script>
 
 <Header classes="mb-4 sm:mb-8" hasBackButton={false} />
