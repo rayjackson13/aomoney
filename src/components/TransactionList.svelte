@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { DefaultTransaction } from '../constants/defaults';
-  import type { Transaction } from '../types/common';
-  import Add from '../assets/icons/Add.svelte';
+  import Add from 'assets/icons/Add.svelte';
+  import { DefaultTransaction } from 'constants/defaults';
+  import type { Transaction } from 'types/common';
+
   import TransactionRow from './TransactionRow.svelte';
   import Card from './Card/Card.svelte';
   import CardHeader from './Card/CardHeader.svelte';
@@ -11,8 +12,6 @@
   export let totalSum = 0;
   export let transactions: Transaction[];
   export let save = () => {};
-  let cmps = [];
-  $: cmps = cmps.filter((el) => el);
 
   const onChange = (index: number) => (row: Transaction) => {
     transactions[index] = row;
@@ -49,7 +48,6 @@
     {#each transactions as row, index}
       <TransactionRow
         {...row}
-        bind:this={cmps[index]}
         onChange={onChange(index)}
         onRemoveRow={() => removeRow(index)}
       />

@@ -9,6 +9,30 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "baseUrl": "."
-  }
+    "baseUrl": "./",
+    "paths": {
+      "assets/*": [
+        "src/assets/*"
+      ],
+      "components/*": [
+        "src/components/*"
+      ],
+      "constants/*": [
+        "src/constants/*"
+      ],
+      "helpers/*": [
+        "src/helpers/*"
+      ],
+      "routes/*": [
+        "src/routes/*"
+      ],
+      "stores/*": [
+        "src/stores/*"
+      ],
+      "types/*": [
+        "src/types/*"
+      ]
+    },
+  },
+	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
 }

@@ -6,7 +6,7 @@
   import Input from './Input.svelte';
 
   export let sheet: TransactionSheet;
-  export let handleStartChange = () => {};
+  const inputClass = 'border-0 w-full';
 </script>
 
 <Table>
@@ -14,15 +14,20 @@
     <Column disabled padding>From:</Column>
     <Column>
       <Input
-        classes="border-0 w-full"
+        classes={inputClass}
         type="date"
+        max={sheet.end}
         bind:value={sheet.start}
-        on:change={handleStartChange}
       />
     </Column>
     <Column disabled padding>To:</Column>
     <Column>
-      <Input type="date" classes="border-0 w-full" min={sheet.start} bind:value={sheet.end} />
+      <Input 
+        classes={inputClass}
+        type="date"
+        min={sheet.start}
+        bind:value={sheet.end}
+      />
     </Column>
   </Row>
 </Table>

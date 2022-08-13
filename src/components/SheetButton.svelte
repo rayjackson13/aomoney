@@ -5,9 +5,12 @@
   import Delete from '../assets/icons/Delete.svelte';
 
   export let item: TransactionSheet;
+  export let updateList = () => {};
 
-  const onDelete = (ev: Event) => {
+  const onDelete = (ev: Event, id: number) => {
     ev.preventDefault();
+    localStorage.removeItem(`sheet-${id}`);
+    updateList();
   };
 </script>
 
@@ -19,7 +22,7 @@
   <div
     class="opacity-75 border-gray-500 text-sm text-end p-3 border-t border-dashed flex items-center justify-between"
   >
-    <button class="p-0 w-6 hover:text-white transition-colors z-10" on:click={onDelete}>
+    <button class="p-0 w-6 hover:text-white transition-colors z-10" on:click={(ev) => onDelete(ev, item.id)}>
       <Delete />
     </button>
     <span>

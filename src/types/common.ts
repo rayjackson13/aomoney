@@ -21,14 +21,18 @@ export type DailyTransactions = {
 export type TransactionSheet = {
   id: number;
   name: string;
-  start: string;
-  end: string;
+  start: string | undefined;
+  end: string | undefined;
   savingPercent: string;
   incomes: Transaction[];
   mandatory: Transaction[];
   period: ExtendedTransaction[];
   daily: DailyTransactions;
   updatedAt: number;
+};
+
+export type SheetDraft = Omit<TransactionSheet, 'id'> & {
+  id?: number;
 };
 
 export type DailyTotal = {

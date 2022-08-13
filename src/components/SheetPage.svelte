@@ -1,6 +1,8 @@
 <script lang="ts">
-  import Header from '../components/Header/Header.svelte';
-  import Form from '../components/Form.svelte';
+  import Header from 'components/Header/Header.svelte';
+  import type { TransactionSheet } from 'types/common';
+
+  import Form from './SheetForm/index.svelte';
 
   export let id: string | undefined;
 
@@ -8,18 +10,19 @@
     if (!id) return undefined;
 
     try {
-      return JSON.parse(localStorage.getItem(`sheet-${id}`) || '{}');
+      const item = localStorage.getItem(`sheet-${id}`);
+      return JSON.parse(item || '{}');
     } catch (e) {
       console.error(e);
       return undefined;
     }
   };
 
-  const sheet = getSheet();
+  let data: TransactionSheet | undefined = getSheet();
 </script>
 
 <Header classes="mb-4 sm:mb-8" />
 
 <main>
-  <Form {sheet} />
+  <Form data={data} />
 </main>

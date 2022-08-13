@@ -2,7 +2,7 @@ import { initializeApp, type FirebaseApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, type AuthError } from 'firebase/auth';
 import * as FS from 'firebase/firestore';
 
-import type { UserInfo } from '../types/common';
+import type { TransactionSheet, UserInfo } from '../types/common';
 import { FirebaseConfig } from '../constants/config';
 
 export class FirebaseHelper {
@@ -87,5 +87,9 @@ export class FirebaseHelper {
       });
     });
     return array;
+  };
+
+  static savePost = async (post: TransactionSheet) => {
+
   };
 }

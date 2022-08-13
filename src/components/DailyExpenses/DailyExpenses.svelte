@@ -3,13 +3,13 @@
   import format from 'date-fns/format';
   import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 
-  import { DateFormat, DefaultExtendedTransaction } from '../../constants/defaults';
+  import { DateFormat, DefaultExtendedTransaction } from 'constants/defaults';
   import type {
     DailyTransactions,
     ExtendedTransaction,
     DailyTotal
-  } from '../../types/common';
-  import { DailyBudget } from '../../helpers/daily';
+  } from 'types/common';
+  import { DailyBudget } from 'helpers/daily';
 
   import Card from '../Card/Card.svelte';
   import CardHeader from '../Card/CardHeader.svelte';
@@ -19,12 +19,12 @@
   import DailyExpenseRow from './DailyExpenseRow.svelte';
 
   export let daily: DailyTransactions;
-  export let startDate: string;
-  export let endDate: string;
+  export let startDate: string | undefined;
+  export let endDate: string | undefined;
   export let dailyBudget: number;
   export let save = () => {};
 
-  const getDailyExpenses = (start: string, end: string): DailyTransactions => {
+  const getDailyExpenses = (start: string | undefined, end: string | undefined): DailyTransactions => {
     if (!start || !end) return {};
 
     const duration = eachDayOfInterval({
@@ -46,8 +46,8 @@
   };
 
   $: daily = getDailyExpenses(startDate, endDate);
-  let cmps = [];
-  $: cmps = cmps.filter((el) => el);
+  // let cmps = [];
+  // $: cmps = cmps.filter((el) => el);
   $: total = { amount: 0, balance: 0 } as DailyTotal;
 
   const addRow = (date: string) => {

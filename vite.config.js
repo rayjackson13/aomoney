@@ -6,12 +6,13 @@ const config = {
   plugins: [sveltekit()],
   resolve: {
     alias: {
-      api: path.resolve('./src/api'),
       assets: path.resolve('./src/assets'),
       components: path.resolve('./src/components'),
       constants: path.resolve('./src/constants'),
+      helpers: path.resolve('./src/helpers'),
+      routes: path.resolve('./src/routes'),
       stores: path.resolve('./src/stores'),
-      utils: path.resolve('./src/utils')
+      types: path.resolve('./src/types'),
     }
   }
 };

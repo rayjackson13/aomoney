@@ -10,8 +10,9 @@
   export let onChange: (row: Transaction) => void;
   export let onRemoveRow: () => void;
 
-  let maskValue = amount;
-  const onAccept = ({ detail }: CustomEvent) => {
+  let maskValue = amount || '';
+  const onAccept = (ev: Event) => {
+    const { detail } = ev as CustomEvent;
     amount = detail.typedValue;
     onChange({ title, amount });
   };

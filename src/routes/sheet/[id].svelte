@@ -1,7 +1,8 @@
 <script lang="ts" context="module">
   import type { LoadEvent, LoadOutput } from "@sveltejs/kit";
 
-  export const load = async ({ params }: LoadEvent): Promise<LoadOutput> => ({
+  export const ssr = false;
+  export const handle = async ({ params }: LoadEvent): Promise<LoadOutput> => ({
     props: {
       id: params.id,
     }
@@ -11,7 +12,7 @@
 <script lang="ts">
   import SheetPage from "../../components/SheetPage.svelte";
 
-  export let id: string;
+  const id = location.pathname.split('/sheet/').at(-1);
 </script>
 
 <SheetPage {id} />

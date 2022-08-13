@@ -8,15 +8,18 @@
 
   let list: TransactionSheet[] = [];
 
-  const getList = () => {
+  const updateList = () => {
     const keys = Object.keys(localStorage).filter((val) => val.match('sheet-'));
-    const list = keys.map((key) => JSON.parse(localStorage.getItem(key)) as TransactionSheet);
-    list.sort((item1, item2) => item2.id - item1.id);
-    return list;
+    const items = keys.map((key) => {
+      const item = localStorage.getItem(key);
+      return JSON.parse(item || '{}') as TransactionSheet;
+    });
+    items.sort((item1, item2) => item2.id - item1.id);
+    list = items;
   };
 
   onMount(() => {
-    list = getList();
+    updateList();
   });
 </script>
 
@@ -25,7 +28,7 @@
   <Grid>
     <NewSheetButton />
     {#each list as item}
-      <SheetButton {item} />
+      <SheetButton {item} {updateList} />
     {/each}
   </Grid>
 </div>
