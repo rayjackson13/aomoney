@@ -1,7 +1,7 @@
 <script lang="ts">
-  import parse from 'date-fns/parse';
-  import format from 'date-fns/format';
-  import eachDayOfInterval from 'date-fns/eachDayOfInterval';
+  import parse from 'date-fns/parse/index';
+  import format from 'date-fns/format/index';
+  import eachDayOfInterval from 'date-fns/eachDayOfInterval/index';
 
   import { DateFormat, DefaultExtendedTransaction } from 'constants/defaults';
   import type {

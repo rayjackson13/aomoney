@@ -1,6 +1,6 @@
-import format from 'date-fns/format';
-import parse from 'date-fns/parse';
-import subDays from 'date-fns/subDays';
+import format from 'date-fns/format/index';
+import parse from 'date-fns/parse/index';
+import subDays from 'date-fns/subDays/index';
 import { DateFormat } from '../constants/defaults';
 import type { DailyTotal, DailyTransactions, ExtendedTransaction } from '../types/common';
 

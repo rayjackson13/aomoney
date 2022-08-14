@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getContext } from 'svelte';
   import { blur } from 'svelte/transition';
-  import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+  import formatDistanceToNow from 'date-fns/formatDistanceToNow/index';
 
   import Delete from 'assets/icons/Delete.svelte';
   import { FirebaseHelper } from 'helpers/FirebaseHelper';

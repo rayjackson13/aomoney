@@ -1,5 +1,5 @@
-import getTime from "date-fns/getTime";
-import intervalToDuration from "date-fns/intervalToDuration";
+import getTime from "date-fns/getTime/index";
+import intervalToDuration from "date-fns/intervalToDuration/index";
 
 import { DefaultTransaction } from "constants/defaults";
 import { FirebaseHelper } from "helpers/FirebaseHelper";
