@@ -25,7 +25,7 @@
       <Column disabled padding classes="w-10 text-center">%</Column>
     </Row>
     <Row>
-      <Column disabled padding classes="w-7/12 sm:w-auto">Remaining income:</Column>
+      <Column disabled padding classes="w-7/12 sm:w-auto">Remainder:</Column>
       <Column disabled padding classes="text-right">{remainingIncome.toLocaleString()}</Column>
       <Column disabled padding classes="w-10 text-center">₽</Column>
     </Row>

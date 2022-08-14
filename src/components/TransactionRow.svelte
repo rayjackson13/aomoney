@@ -5,6 +5,7 @@
   import Column from './Table/Column.svelte';
   import Input from './Input.svelte';
 
+  export let id: Transaction['id'];
   export let title: Transaction['title'];
   export let amount: Transaction['amount'];
   export let onChange: (row: Transaction) => void;
@@ -14,10 +15,10 @@
   const onAccept = (ev: Event) => {
     const { detail } = ev as CustomEvent;
     amount = detail.typedValue;
-    onChange({ title, amount });
+    onChange({ id, title, amount });
   };
 
-  const handleChange = () => onChange({ title, amount });
+  const handleChange = () => onChange({ id, title, amount });
 </script>
 
 <tr class="border-y-2 first:border-t-0 last:border-b-0" transition:scale|local>

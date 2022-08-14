@@ -13,12 +13,20 @@
   export let transactions: Transaction[];
   export let save = () => {};
 
+  console.log(transactions);
+
   const onChange = (index: number) => (row: Transaction) => {
     transactions[index] = row;
   };
 
+  const getMaxId = () => {
+    const ids = transactions.map(val => val.id);
+    return Math.max(...ids);
+  };
+
   const addRow = () => {
-    transactions = [...transactions, DefaultTransaction];
+    const id = getMaxId() + 1;
+    transactions = [...transactions, { ...DefaultTransaction, id }];
     save();
   };
 
@@ -44,7 +52,7 @@
     </button>
   </CardHeader>
   <Table>
-    {#each transactions as row, index}
+    {#each transactions as row, index (row.id)}
       <TransactionRow
         {...row}
         onChange={onChange(index)}

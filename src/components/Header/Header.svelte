@@ -45,14 +45,14 @@
       </button>
 
       {#if menuOpen}
-      <span class="flex flex-col py-2" transition:slide|local>
-        <a href="/dashboard" class="flex items-center justify-center w-full h-10 rounded-lg hover:opacity-50 transition-opacity" transition:scale|local>
+      <span class="flex flex-col py-2 text-left" transition:slide|local>
+        <a href="/dashboard" class="px-12 flex items-center justify-start w-full h-10 rounded-lg hover:opacity-50 transition-opacity" transition:scale|local>
           <i class="w-4 mr-2"><Dashboard /></i>
           Dashboard
         </a>
         <a
           href="/logout"
-          class="flex items-center justify-center w-full h-10 rounded-lg hover:opacity-50 transition-opacity"
+          class="px-12 flex items-center justify-start w-full h-10 rounded-lg hover:opacity-50 transition-opacity"
           target="_self"
           transition:scale|local>
           <i class="w-4 mr-2"><Logout /></i>

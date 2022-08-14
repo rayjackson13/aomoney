@@ -6,6 +6,7 @@ import type { SheetDraft, Transaction, TransactionSheet, UserInfo } from "types/
 
 
 const DefaultTransaction: Transaction = {
+  id: 0,
   title: '',
   amount: null
 };
@@ -40,13 +41,20 @@ export class TransactionViewer {
     name: 'New Sheet',
     start: undefined,
     end: undefined,
-    incomes: Array(3).fill(DefaultTransaction),
-    mandatory: Array(5).fill(DefaultTransaction),
+    incomes: this.createTransactionList(3),
+    mandatory: this.createTransactionList(5),
     period: [],
     daily: {},
     savingPercent: '10',
     updatedAt: getTime(new Date())
   });
+
+  private createTransactionList = (length: number): Transaction[] => {
+    return Array(length).fill(DefaultTransaction).map((val, idx) => ({
+      ...val,
+      id: idx
+    }));
+  };
 
   private calculateTotal = (input: Transaction[]) => input.reduce(
     (total, { amount }) =>

@@ -4,6 +4,7 @@ export const enum TransactionType {
 }
 
 export type Transaction = {
+  id: number;
   title: string;
   amount: string | null;
 };
