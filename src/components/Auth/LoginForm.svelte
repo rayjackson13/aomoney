@@ -31,7 +31,7 @@
 
 <style>
   .auth-bg {
-    background-image: linear-gradient(45deg, rgba(110, 139, 174, .3), rgba(174, 110, 110, .3)),url('img/Auth.jpg');
+    background-image: linear-gradient(45deg, rgba(110, 139, 174, .3), rgba(174, 110, 110, .3)),url('/img/Auth.jpg');
     background-position: right;
     background-size: cover;
   }
