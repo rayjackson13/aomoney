@@ -32,25 +32,43 @@
 
 <form on:input={onSave} autocomplete="disabled" class="mb-8 text-gray-800">
   <Portal target="#header-title-portal">
-    <div class="relative flex items-center">
+    <div class="relative items-center hidden md:flex">
       <span
-        class="flex-auto border-gray-300 focus:outline-none focus:border-blue-500 transition-colors bg-white/10 backdrop-blur-sm hover:bg-white/20 focus:bg-white/20 hover:z-auto focus:z-auto rounded-lg py-3 pl-4 pr-10 leading-6"
+        class="whitespace-nowrap overflow-hidden border-gray-300 focus:outline-none focus:border-blue-500 transition-colors bg-white/10 backdrop-blur-sm hover:bg-white/20 focus:bg-white/20 hover:z-auto focus:z-auto rounded-lg py-3 pl-4 pr-10 leading-6"
         contenteditable
         bind:innerHTML={sheet.name}
         on:input={viewer.save}
         on:keydown={onNameKeyDown}
       />
-      <div class="absolute w-4 h-4 right-4">
+      <div class="absolute w-4 h-4 right-4 hidden sm:block">
         <Edit />
       </div>
     </div>
   </Portal>
 
-  <div class="sm:px-5 flex flex-wrap">
+  <div class="px-4 flex flex-wrap">
     <div class="w-full xl:w-5/12 sm:px-5">
+      <Card classes="md:hidden">
+        <CardHeader>
+          <p class="text-md md:text-xl">Sheet title</p>
+        </CardHeader>
+        <div class="relative items-center flex">
+          <span
+            class="border-t-2 text-sm block border-gray-200 w-full whitespace-nowrap overflow-hidden focus:outline-none py-3 pl-4 pr-10 leading-6"
+            contenteditable
+            bind:innerHTML={sheet.name}
+            on:input={viewer.save}
+            on:keydown={onNameKeyDown}
+          />
+          <div class="absolute w-4 h-4 right-4">
+            <Edit />
+          </div>
+        </div>
+      </Card>
+
       <Card>
         <CardHeader>
-          <p class="text-lg sm:text-xl">Time period</p>
+          <p class="text-md md:text-xl">Time period</p>
         </CardHeader>
         <DatePicker bind:sheet />
       </Card>

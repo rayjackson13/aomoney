@@ -103,7 +103,7 @@ export class FirebaseHelper {
 
   static getPosts = async (user: UserInfo): Promise<TransactionSheet[]> => {
     try {
-      const q = FS.query(FS.collection(this.db, 'sheets'), FS.where('userId', '==', user.id));
+      const q = FS.query(FS.collection(this.db, 'sheets'), FS.where('userId', '==', user.id), FS.orderBy('updatedAt', 'desc'));
       const snapshot = await FS.getDocs(q);
       return this.snapshotToArray(snapshot) as TransactionSheet[];
     } catch (e) {

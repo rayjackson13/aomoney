@@ -4,7 +4,7 @@
   import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
   import Delete from 'assets/icons/Delete.svelte';
-  import { FirebaseHelper } from 'helpers/firebase';
+  import { FirebaseHelper } from 'helpers/FirebaseHelper';
   import type { TransactionSheet, UserContext } from 'types/common';
 
   import DeleteModal from './DeleteModal.svelte';
@@ -37,7 +37,10 @@
   href={`sheet/${item.id}`}
   out:blur|local
 >
-  <h5 class="card-title text-primary py-8 px-6 text-lg">{item.name}</h5>
+  <h5 class="card-title text-primary py-8 px-6 text-lg max-w-full whitespace-nowrap overflow-hidden text-ellipsis">
+    {item.name}
+  </h5>
+
   <div
     class="opacity-75 border-gray-500 text-sm text-end p-3 border-t border-dashed flex items-center justify-between"
   >

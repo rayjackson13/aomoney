@@ -9,7 +9,7 @@
     ExtendedTransaction,
     DailyTotal
   } from 'types/common';
-  import { DailyBudget } from 'helpers/daily';
+  import { DailyBudget } from 'helpers/DailyBudget';
 
   import Card from '../Card/Card.svelte';
   import CardHeader from '../Card/CardHeader.svelte';
@@ -93,7 +93,7 @@
 
 <Card>
   <CardHeader>
-    <p class="text-lg sm:text-xl">Daily Expenses</p>
+    <p class="text-md md:text-xl">Daily Expenses</p>
   </CardHeader>
   <Table scrollable>
     <tbody class="table w-full">

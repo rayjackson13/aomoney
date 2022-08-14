@@ -1,3 +1,3 @@
-<div class="pl-8 py-4 pr-2 flex justify-between">
+<div class="pl-4 md:pl-8 pr-2 py-3 md:py-4 flex justify-between">
   <slot />
 </div>

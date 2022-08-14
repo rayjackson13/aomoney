@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex-1 flex flex-col text-gray-800">
-  <div class="flex-1 px-5 sm:px-5 flex items-center auth-bg">
+  <div class="flex-1 px-5 flex items-center auth-bg">
     <div class="flex flex-col items-center ml-auto h-min xl:mr-96 xl:w-5/12 mr-auto lg:w-10/12 w-full">
       <span class="mb-8 w-32 md:w-48 icon-shadow">
         <Logo />

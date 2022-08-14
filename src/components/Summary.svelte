@@ -14,7 +14,7 @@
 
 <Card>
   <CardHeader>
-    <p class="text-lg sm:text-xl">Summary</p>
+    <p class="text-md md:text-xl">Summary</p>
   </CardHeader>
   <Table>
     <Row>

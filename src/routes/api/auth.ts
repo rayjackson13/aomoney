@@ -1,7 +1,7 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import * as Cookie from 'cookie';
 
-import { FirebaseHelper } from "../../helpers/firebase";
+import { FirebaseHelper } from "../../helpers/FirebaseHelper";
 import type { UserInfo } from "../../types/common";
 
 export const POST: RequestHandler = async ({ request }) => {

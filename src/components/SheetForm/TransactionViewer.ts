@@ -2,7 +2,7 @@ import getTime from "date-fns/getTime";
 import intervalToDuration from "date-fns/intervalToDuration";
 
 import { DefaultTransaction } from "constants/defaults";
-import { FirebaseHelper } from "helpers/firebase";
+import { FirebaseHelper } from "helpers/FirebaseHelper";
 import type { SheetDraft, Transaction, TransactionSheet, UserInfo } from "types/common";
 
 export class TransactionViewer {

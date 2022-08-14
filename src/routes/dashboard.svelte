@@ -2,7 +2,7 @@
   import type { Load } from "@sveltejs/kit";
 
   import type { App } from "app";
-  import { FirebaseHelper } from "helpers/firebase";
+  import { FirebaseHelper } from "helpers/FirebaseHelper";
   import type { TransactionSheet } from "types/common";
 
   export const load: Load = async ({ session, props }) => {

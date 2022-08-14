@@ -2,7 +2,7 @@
   import type { LoadEvent, LoadOutput } from "@sveltejs/kit";
 
   import type { App } from "app";
-  import { FirebaseHelper } from "helpers/firebase";
+  import { FirebaseHelper } from "helpers/FirebaseHelper";
 
   export const load = async ({ session, params }: LoadEvent): Promise<LoadOutput> => {
     const { user } = session as App.Session;

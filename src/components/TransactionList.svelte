@@ -36,7 +36,7 @@
 
 <Card>
   <CardHeader>
-    <p class="text-lg sm:text-xl">
+    <p class="text-md md:text-xl">
       {title}{' '}
       <span class="text-color-500">| </span>
       <span class="text-blue-500 font-semibold">{totalSum.toLocaleString()} ₽</span>

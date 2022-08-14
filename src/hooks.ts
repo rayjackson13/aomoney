@@ -2,7 +2,7 @@ import type { GetSession, Handle } from "@sveltejs/kit";
 import Cookie from 'cookie';
 
 import type { App } from "./app";
-import { FirebaseHelper } from "./helpers/firebase";
+import { FirebaseHelper } from "./helpers/FirebaseHelper";
 
 export const handle: Handle = async ({ event, resolve }) => {
   FirebaseHelper.initialize();
