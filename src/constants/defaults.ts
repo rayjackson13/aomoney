@@ -1,15 +1,15 @@
 import type { ExtendedTransaction, Transaction } from '../types/common';
 
 export const DefaultTransaction: Transaction = {
+  id: 0,
   title: '',
   amount: null
 };
 
 export const DefaultExtendedTransaction: ExtendedTransaction = {
-  title: '',
+  ...DefaultTransaction,
   budget: 0,
   balance: 0,
-  amount: null
 };
 
 export const DateFormat = 'dd.MM.yyyy';

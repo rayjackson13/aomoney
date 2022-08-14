@@ -6,7 +6,7 @@ import type { DailyTotal, DailyTransactions, ExtendedTransaction } from '../type
 
 export class DailyBudget {
   static calculate = (input: DailyTransactions, dailyBudget: number) => {
-    return Object.keys(input).reduce((total, current, index) => {
+    return Object.keys(input).reduce((total: DailyTransactions, current, index) => {
       const date = parse(current, DateFormat, new Date());
       const day: ExtendedTransaction[] = input[current];
 

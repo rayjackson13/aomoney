@@ -46,18 +46,23 @@
   };
 
   $: daily = getDailyExpenses(startDate, endDate);
-  // let cmps = [];
-  // $: cmps = cmps.filter((el) => el);
   $: total = { amount: 0, balance: 0 } as DailyTotal;
 
+  const getMaxId = (date: string) => {
+    const ids = daily[date].map(val => val.id);
+    return Math.max(...ids);
+  };
+
   const addRow = (date: string) => {
+    const id = getMaxId(date) + 1;
     daily = {
       ...daily,
       [date]: [
         ...daily[date],
         {
           ...DefaultExtendedTransaction,
-          additive: true
+          additive: true,
+          id,
         }
       ]
     };
@@ -100,8 +105,8 @@
         <Column disabled padding>Balance</Column>
         <Column disabled padding />
       </Row>
-      {#each Object.keys(daily) as row}
-        {#each daily[row] as item, index}
+      {#each Object.keys(daily) as row (row)}
+        {#each daily[row] as item, index (item.id)}
           <DailyExpenseRow
             {item}
             date={row}

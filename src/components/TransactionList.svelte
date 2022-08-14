@@ -13,8 +13,6 @@
   export let transactions: Transaction[];
   export let save = () => {};
 
-  console.log(transactions);
-
   const onChange = (index: number) => (row: Transaction) => {
     transactions[index] = row;
   };

@@ -1,15 +1,9 @@
 import getTime from "date-fns/getTime";
 import intervalToDuration from "date-fns/intervalToDuration";
+
+import { DefaultTransaction } from "constants/defaults";
 import { FirebaseHelper } from "helpers/firebase";
-
 import type { SheetDraft, Transaction, TransactionSheet, UserInfo } from "types/common";
-
-
-const DefaultTransaction: Transaction = {
-  id: 0,
-  title: '',
-  amount: null
-};
 
 export class TransactionViewer {
   sheet: SheetDraft;
@@ -74,7 +68,6 @@ export class TransactionViewer {
   };
 
   save = async () => {
-    console.log('save');
     const timestamp = getTime(new Date());
     if (!this.sheet.id) {
       this.sheet.id = timestamp;
