@@ -2,7 +2,7 @@
   import { getContext } from "svelte";
   import { scale, slide } from "svelte/transition";
 
-  import Dashboard from 'assets/icons/dashboard.svelte';
+  import Dashboard from 'assets/icons/Dashboard.svelte';
   import Expand from 'assets/icons/Expand.svelte';
   import Logout from 'assets/icons/Logout.svelte';
   import type { UserContext } from "types/common";
@@ -17,15 +17,14 @@
 <div class="absolute flex flex-col right-0 top-0 md:backdrop-blur-sm rounded-lg transition-all text-white {menuOpen ? 'shadow bg-gray-800' : 'md:bg-white/10 hover:md:bg-white/20'}">
   <button class="w-full overflow-hidden" on:click={toggleMenu}>
     <span class="flex items-center justify-end w-full anim-btn {menuOpen && 'anim-btn_open'}">
-      <img class="rounded-lg w-12 h-12" src={user.avatar} alt="User initials">
-      <!-- <object
+      <object
         aria-label="User photo"
         class="rounded-lg w-12 h-12 overflow-hidden"
         data={user.avatar}
         type="image/png"
       >
         <img class="w-full h-full" src="https://avatars.dicebear.com/api/initials/{user.name.replace(/\s/, '+')}.svg" alt="User initials">
-      </object> -->
+      </object>
       <span class="items-center flex">
         <p class="font-medium ml-4 select-none">{user.name}</p>
         <span class="w-12 p-3 transition-transform {menuOpen && '-rotate-180'}">
