@@ -28,7 +28,7 @@ export class DailyBudget {
     day: ExtendedTransaction[],
     dailyBudget: number
   ): ExtendedTransaction[] => {
-    return day.reduce((total, val, idx) => {
+    return day.reduce((total: ExtendedTransaction[], val, idx) => {
       const row = val;
       if (idx === 0) {
         const balance = dailyBudget - Number(row.amount);

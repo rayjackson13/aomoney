@@ -13,8 +13,9 @@
   export let deleteRow = () => {};
   export let update = () => {};
 
-  let maskValue = item.amount;
-  const onAccept = ({ detail }: CustomEvent) => {
+  let maskValue = item.amount || undefined;
+  const onAccept = (ev: Event) => {
+    const { detail } = ev as CustomEvent;
     item.amount = detail.typedValue;
     update();
   };
