@@ -41,7 +41,7 @@
   <div
     class="opacity-75 border-gray-500 text-sm text-end p-3 border-t border-dashed flex items-center justify-between"
   >
-    <button class="p-0 w-6 hover:text-white transition-colors z-10" on:click={onDeletePressed}>
+    <button class="p-0 w-6 hover:opacity-50 transition-opacity z-10" on:click={onDeletePressed}>
       <Delete />
     </button>
     <span>

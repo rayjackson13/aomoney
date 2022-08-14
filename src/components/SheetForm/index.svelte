@@ -34,13 +34,13 @@
   <Portal target="#header-title-portal">
     <div class="relative flex items-center">
       <span
-        class="flex-auto border-gray-300 focus:outline-none focus:border-blue-500 transition-colors bg-transparent border-2 border-transparent hover:border-transparent hover:z-auto focus:z-auto focus:border-b-white hover:border-b-white/50 py-0 pl-0 pr-6"
+        class="flex-auto border-gray-300 focus:outline-none focus:border-blue-500 transition-colors bg-white/10 backdrop-blur-sm hover:bg-white/20 focus:bg-white/20 hover:z-auto focus:z-auto rounded-lg py-3 pl-4 pr-10 leading-6"
         contenteditable
         bind:innerHTML={sheet.name}
         on:input={viewer.save}
         on:keydown={onNameKeyDown}
       />
-      <div class="absolute w-4 h-4 right-0">
+      <div class="absolute w-4 h-4 right-4">
         <Edit />
       </div>
     </div>
