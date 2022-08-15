@@ -26,3 +26,12 @@ svg {
 *::before {
   box-sizing: border-box;
 }
+
+/* Fixes date inputs on iOS */
+input[type="date"] {
+  display:block;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  min-height: 1.2em;
+  background-color: transparent;
+}
