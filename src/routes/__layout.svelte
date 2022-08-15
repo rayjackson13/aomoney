@@ -18,9 +18,15 @@
 </script>
 
 <script lang="ts">
+  import { AppName } from "constants/defaults";
+
   export let session: App.Session;
   setContext('session', session);
 </script>
+
+<svelte:head>
+  <title>{AppName}</title>
+</svelte:head>
 
 <slot />
 

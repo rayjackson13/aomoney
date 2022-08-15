@@ -11,6 +11,7 @@
   import CardHeader from 'components/Card/CardHeader.svelte';
   import Summary from 'components/Summary.svelte';
   import DailyExpenses from 'components/DailyExpenses/DailyExpenses.svelte';
+  import { AppName } from 'constants/defaults';
   import type { TransactionSheet } from 'types/common';
 
   import { TransactionViewer } from './TransactionViewer';
@@ -29,6 +30,10 @@
 
   const onSave = debounce(() => viewer.save(), 200);
 </script>
+
+<svelte:head>
+  <title>{sheet.name} | {AppName}</title>
+</svelte:head>
 
 <form on:input={onSave} autocomplete="disabled" class="mb-8 text-gray-800">
   <Portal target="#header-title-portal">

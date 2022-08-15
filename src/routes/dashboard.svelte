@@ -20,10 +20,15 @@
 <script lang="ts">
   import Header from 'components/Header/Header.svelte';
   import SheetList from 'components/SheetList.svelte';
+  import { AppName } from 'constants/defaults';
   import type { TransactionSheet } from "types/common";
 
   export let list: TransactionSheet[] = [];
 </script>
+
+<svelte:head>
+  <title>Dashboard | {AppName}</title>
+</svelte:head>
 
 <Header classes="mb-4 sm:mb-8" hasBackButton={false} />
 <SheetList {list} />

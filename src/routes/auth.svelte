@@ -14,11 +14,16 @@
 <script lang="ts">
   import { FirebaseHelper } from 'helpers/FirebaseHelper';
   import LoginForm from 'components/Auth/LoginForm.svelte';
+  import { AppName } from 'constants/defaults';
 
   const onLogin = async () => {
     const callback = () => location.pathname = '/dashboard';
     await FirebaseHelper.signIn(callback);
   };
 </script>
+
+<svelte:head>
+  <title>Log in | {AppName}</title>
+</svelte:head>
 
 <LoginForm {onLogin} />
