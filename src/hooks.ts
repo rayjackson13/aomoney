@@ -5,7 +5,6 @@ import type { App } from "./app";
 import { FirebaseHelper } from "./helpers/FirebaseHelper";
 
 export const handle: Handle = async ({ event, resolve }) => {
-  FirebaseHelper.initialize();
   const { headers } = event.request;
   const { sessionId = undefined } = Cookie.parse(headers.get('cookie') || '');
   if (sessionId) {

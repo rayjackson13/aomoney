@@ -1,21 +1,16 @@
-import { initializeApp, type FirebaseApp } from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, type AuthError } from 'firebase/auth';
 import * as FS from 'firebase/firestore';
 
 import type { TransactionSheet, UserInfo } from '../types/common';
 import { FirebaseConfig } from '../constants/config';
 
+initializeApp(FirebaseConfig);
+const db = FS.getFirestore();
+const auth = getAuth();
+
 export class FirebaseHelper {
-  static appConfig: FirebaseApp;
-  static db: FS.Firestore;
-
-  static initialize = () => {
-    this.appConfig = initializeApp(FirebaseConfig);
-    this.db = FS.getFirestore(this.appConfig);
-  };
-
   static signIn = async (callback = () => {}): Promise<UserInfo | undefined> => {
-    const auth = getAuth();
     const provider = new GoogleAuthProvider();
 
     try {
@@ -28,7 +23,7 @@ export class FirebaseHelper {
         accessToken: credential.accessToken,
         email: user.email,
         name: user.displayName || '',
-        avatar: user.photoURL || '',
+        picture: user.photoURL || '',
         id: user.uid
       });
       callback();
@@ -55,7 +50,7 @@ export class FirebaseHelper {
   };
 
   static saveUser = async (userInfo: UserInfo) => {
-    const ref = FS.doc(this.db, 'users', userInfo.id);
+    const ref = FS.doc(db, 'users', userInfo.id);
 
     try {
       await FS.setDoc(ref, userInfo);
@@ -66,7 +61,7 @@ export class FirebaseHelper {
 
   static findUser = async (sessionId: string): Promise<UserInfo | undefined> => {
     try {
-      const q = FS.query(FS.collection(this.db, "users"), FS.where('accessToken', '==', sessionId));
+      const q = FS.query(FS.collection(db, "users"), FS.where('accessToken', '==', sessionId));
       const snapshot = await FS.getDocs(q);
       const result = this.snapshotToArray(snapshot);
       const user = result[0];
@@ -90,7 +85,7 @@ export class FirebaseHelper {
   };
 
   static getPost = async (user: UserInfo, id: string): Promise<TransactionSheet | undefined> => {
-    const ref = FS.doc(this.db, 'sheets', id);
+    const ref = FS.doc(db, 'sheets', id);
 
     try {
       const result = await FS.getDoc(ref);
@@ -103,7 +98,7 @@ export class FirebaseHelper {
 
   static getPosts = async (user: UserInfo): Promise<TransactionSheet[]> => {
     try {
-      const q = FS.query(FS.collection(this.db, 'sheets'), FS.where('userId', '==', user.id), FS.orderBy('updatedAt', 'desc'));
+      const q = FS.query(FS.collection(db, 'sheets'), FS.where('userId', '==', user.id), FS.orderBy('updatedAt', 'desc'));
       const snapshot = await FS.getDocs(q);
       return this.snapshotToArray(snapshot) as TransactionSheet[];
     } catch (e) {
@@ -113,7 +108,7 @@ export class FirebaseHelper {
   };
 
   static savePost = async (user: UserInfo, post: TransactionSheet) => {
-    const ref = FS.doc(this.db, 'sheets', post.id.toString());
+    const ref = FS.doc(db, 'sheets', post.id.toString());
 
     try {
       await FS.setDoc(ref, { ...post, userId: user.id});
@@ -123,7 +118,7 @@ export class FirebaseHelper {
   };
 
   static deletePost = async (user: UserInfo, postId: string) => {
-    const ref = FS.doc(this.db, 'sheets', postId);
+    const ref = FS.doc(db, 'sheets', postId);
 
     try {
       await FS.deleteDoc(ref);

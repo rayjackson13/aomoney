@@ -3,7 +3,6 @@
 
   import type { App } from "app";
   import { FirebaseHelper } from "helpers/FirebaseHelper";
-  import type { TransactionSheet } from "types/common";
 
   export const load: Load = async ({ session, props }) => {
     const { user } = session as App.Session;
@@ -19,10 +18,11 @@
 </script>
 
 <script lang="ts">
-  import Header from '../components/Header/Header.svelte';
-  import SheetList from '../components/SheetList.svelte';
+  import Header from 'components/Header/Header.svelte';
+  import SheetList from 'components/SheetList.svelte';
+  import type { TransactionSheet } from "types/common";
 
-  export let list: TransactionSheet[];
+  export let list: TransactionSheet[] = [];
 </script>
 
 <Header classes="mb-4 sm:mb-8" hasBackButton={false} />

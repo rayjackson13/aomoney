@@ -3,11 +3,8 @@
   import type { Load } from "@sveltejs/kit";
 
   import type { App } from "app";
-  import { FirebaseHelper } from "helpers/FirebaseHelper";
 
   export const load: Load = async ({ session, routeId }) => {
-    FirebaseHelper.initialize();
-
     if (routeId !== 'auth' && !(session as App.Session).user) {
       return { redirect: 'auth', status: 302 };
     }
