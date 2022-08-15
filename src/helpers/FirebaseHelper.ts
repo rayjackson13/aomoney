@@ -1,22 +1,32 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, type AuthError } from 'firebase/auth';
+import * as Auth from 'firebase/auth';
 import * as FS from 'firebase/firestore';
 
 import type { TransactionSheet, UserInfo } from '../types/common';
 import { FirebaseConfig } from '../constants/config';
 
-initializeApp(FirebaseConfig);
-const db = FS.getFirestore();
-const auth = getAuth();
-
 export class FirebaseHelper {
+  private static auth: Auth.Auth;
+  private static db: FS.Firestore;
+  private static ready = false;
+
+  static initialize = async () => {
+    initializeApp(FirebaseConfig);
+    this.db = FS.getFirestore();
+    this.auth = Auth.getAuth();
+    Auth.setPersistence(this.auth, Auth.browserLocalPersistence);
+
+    // todo: wait for user to load.
+    console.log('current user', this.auth.currentUser);
+  };
+
   static signIn = async (callback = () => {}): Promise<UserInfo | undefined> => {
-    const provider = new GoogleAuthProvider();
+    const provider = new Auth.GoogleAuthProvider();
 
     try {
-      const result = await signInWithPopup(auth, provider);
+      const result = await Auth.signInWithPopup(this.auth, provider);
       const { user } = result;
-      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const credential = Auth.GoogleAuthProvider.credentialFromResult(result);
       if (!credential || !credential.accessToken || !user.email) return;
 
       await this.postUser({
@@ -28,9 +38,9 @@ export class FirebaseHelper {
       });
       callback();
     } catch (e) {
-      const error = e as AuthError;
+      const error = e as Auth.AuthError;
       const { code, message } = error;
-      const credential = GoogleAuthProvider.credentialFromError(error);
+      const credential = Auth.GoogleAuthProvider.credentialFromError(error);
       console.error(code, message, credential);
     }
   };
@@ -50,7 +60,7 @@ export class FirebaseHelper {
   };
 
   static saveUser = async (userInfo: UserInfo) => {
-    const ref = FS.doc(db, 'users', userInfo.id);
+    const ref = FS.doc(this.db, 'users', userInfo.id);
 
     try {
       await FS.setDoc(ref, userInfo);
@@ -61,7 +71,7 @@ export class FirebaseHelper {
 
   static findUser = async (sessionId: string): Promise<UserInfo | undefined> => {
     try {
-      const q = FS.query(FS.collection(db, "users"), FS.where('accessToken', '==', sessionId));
+      const q = FS.query(FS.collection(this.db, "users"), FS.where('accessToken', '==', sessionId));
       const snapshot = await FS.getDocs(q);
       const result = this.snapshotToArray(snapshot);
       const user = result[0];
@@ -85,7 +95,7 @@ export class FirebaseHelper {
   };
 
   static getPost = async (user: UserInfo, id: string): Promise<TransactionSheet | undefined> => {
-    const ref = FS.doc(db, 'sheets', id);
+    const ref = FS.doc(this.db, 'sheets', id);
 
     try {
       const result = await FS.getDoc(ref);
@@ -98,7 +108,7 @@ export class FirebaseHelper {
 
   static getPosts = async (user: UserInfo): Promise<TransactionSheet[]> => {
     try {
-      const q = FS.query(FS.collection(db, 'sheets'), FS.where('userId', '==', user.id), FS.orderBy('updatedAt', 'desc'));
+      const q = FS.query(FS.collection(this.db, 'sheets'), FS.where('userId', '==', user.id), FS.orderBy('updatedAt', 'desc'));
       const snapshot = await FS.getDocs(q);
       return this.snapshotToArray(snapshot) as TransactionSheet[];
     } catch (e) {
@@ -108,7 +118,7 @@ export class FirebaseHelper {
   };
 
   static savePost = async (user: UserInfo, post: TransactionSheet) => {
-    const ref = FS.doc(db, 'sheets', post.id.toString());
+    const ref = FS.doc(this.db, 'sheets', post.id.toString());
 
     try {
       await FS.setDoc(ref, { ...post, userId: user.id});
@@ -118,7 +128,7 @@ export class FirebaseHelper {
   };
 
   static deletePost = async (user: UserInfo, postId: string) => {
-    const ref = FS.doc(db, 'sheets', postId);
+    const ref = FS.doc(this.db, 'sheets', postId);
 
     try {
       await FS.deleteDoc(ref);
@@ -127,3 +137,5 @@ export class FirebaseHelper {
     }
   };
 }
+
+FirebaseHelper.initialize();

@@ -6,7 +6,7 @@
 
   export const load: Load = async ({ session, props }) => {
     const { user } = session as App.Session;
-    
+
     const list = await FirebaseHelper.getPosts(user);
     return {
       props: {
