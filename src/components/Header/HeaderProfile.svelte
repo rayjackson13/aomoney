@@ -1,11 +1,14 @@
 <script lang="ts">
   import { getContext } from "svelte";
   import { scale, slide } from "svelte/transition";
+  import { _ } from 'svelte-i18n';
 
   import Dashboard from 'assets/icons/Dashboard.svelte';
   import Expand from 'assets/icons/Expand.svelte';
   import Logout from 'assets/icons/Logout.svelte';
   import type { UserContext } from "types/common";
+
+  import HeaderLang from "./HeaderLang.svelte";
 
   const { user } = getContext('session') as UserContext;
 
@@ -36,9 +39,10 @@
 
   {#if menuOpen}
   <span class="flex flex-col py-2 text-left" transition:slide|local>
+    <HeaderLang />
     <a href="/dashboard" class="px-12 flex items-center justify-start w-full h-10 rounded-lg hover:opacity-50 transition-opacity" transition:scale|local>
       <i class="w-4 mr-2"><Dashboard /></i>
-      Dashboard
+      {$_('menu.dashboard')}
     </a>
     <a
       href="/logout"
@@ -46,7 +50,7 @@
       target="_self"
       transition:scale|local>
       <i class="w-4 mr-2"><Logout /></i>
-      Log out
+      {$_('menu.logout')}
     </a>
   </span>
   {/if}

@@ -26,6 +26,9 @@
       "helpers/*": [
         "src/helpers/*"
       ],
+      "lang/*": [
+        "src/lang/*"
+      ],
       "routes/*": [
         "src/routes/*"
       ],

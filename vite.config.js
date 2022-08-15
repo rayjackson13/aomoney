@@ -11,6 +11,7 @@ const config = {
       components: path.resolve('./src/components'),
       constants: path.resolve('./src/constants'),
       helpers: path.resolve('./src/helpers'),
+      lang: path.resolve('./src/lang'),
       routes: path.resolve('./src/routes'),
       stores: path.resolve('./src/stores'),
       types: path.resolve('./src/types'),

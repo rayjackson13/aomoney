@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getContext } from 'svelte';
+  import { _ } from 'svelte-i18n';
   
   import type { App } from 'app';
   import { FirebaseHelper } from 'helpers/FirebaseHelper';
@@ -18,7 +19,9 @@
 </script>
 
 <div class="container px-4 mx-auto">
-  <h1 class="my-12 text-2xl md:text-4xl font-bold text-center text-gray-800">Your Budget Sheets</h1>
+  <h1 class="my-12 text-2xl md:text-4xl font-bold text-center text-gray-800">
+    {$_('dashboard.title')}
+  </h1>
   <Grid>
     <NewSheetButton />
     {#each list as item}

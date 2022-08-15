@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { _ } from 'svelte-i18n';
   import parse from 'date-fns/parse/index';
   import format from 'date-fns/format/index';
   import eachDayOfInterval from 'date-fns/eachDayOfInterval/index';
@@ -102,16 +103,16 @@
 
 <Card>
   <CardHeader>
-    <p class="text-md md:text-xl">Daily Expenses</p>
+    <p class="text-md md:text-xl">{$_('edit.daily.title')}</p>
   </CardHeader>
   <Table scrollable>
     <tbody class="table w-full">
       <Row>
-        <Column disabled padding>Date</Column>
-        <Column disabled padding>Description</Column>
-        <Column disabled padding>Amount</Column>
-        <Column disabled padding>Daily budget</Column>
-        <Column disabled padding>Balance</Column>
+        <Column disabled padding>{$_('edit.daily.date')}</Column>
+        <Column disabled padding>{$_('edit.description')}</Column>
+        <Column disabled padding>{$_('edit.amount')}</Column>
+        <Column disabled padding>{$_('edit.budget')}</Column>
+        <Column disabled padding>{$_('edit.daily.balance')}</Column>
         <Column disabled padding />
       </Row>
       {#each Object.keys(daily) as row (row)}
@@ -127,7 +128,7 @@
       {/each}
       <Row>
         <Column padding />
-        <Column padding classes="font-semibold">Total</Column>
+        <Column padding classes="font-semibold">{$_('edit.daily.total')}</Column>
         <Column padding classes="text-right font-semibold"
           >{Math.round(total.amount).toLocaleString()}</Column
         >

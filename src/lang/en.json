@@ -1,0 +1,39 @@
+{
+  "login": {
+    "title": "Don't worry about @accent.",
+    "accent": "finances",
+    "sub": "We got you covered.",
+    "cta": "Sign in with Google"
+  },
+  "dashboard": {
+    "title": "Your Budget Sheets",
+    "lastUpdated": "last updated"
+  },
+  "menu": {
+    "dashboard": "Dashboard",
+    "logout": "Log out"
+  },
+  "edit": {
+    "title": "Sheet title",
+    "period": "Time period",
+    "from": "From",
+    "to": "To",
+    "income": "Income",
+    "mandatory": "Mandatory expenses",
+    "description": "Description",
+    "amount": "Amount",
+    "budget": "Daily budget",
+    "summary": {
+      "title": "Summary",
+      "percentage": "Savings percentage",
+      "remainder": "Remainder",
+      "savings": "Savings amount"
+    },
+    "daily": {
+      "title": "Daily Expenses",
+      "date": "Date",
+      "balance": "Balance",
+      "total": "Total"
+    }
+  }
+}

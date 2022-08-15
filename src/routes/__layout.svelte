@@ -3,6 +3,12 @@
   import type { Load } from "@sveltejs/kit";
 
   import type { App } from "app";
+  import { waitLocale } from 'svelte-i18n';
+  import 'lang/lang';
+
+  export const preload = async () => {
+    return await waitLocale();
+  };
 
   export const load: Load = async ({ session, routeId }) => {
     if (routeId !== 'auth' && !(session as App.Session).user) {

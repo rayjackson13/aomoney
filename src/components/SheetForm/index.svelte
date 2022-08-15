@@ -2,6 +2,7 @@
   import { getContext } from 'svelte';
   import Portal from 'svelte-portal';
   import debounce from 'lodash/debounce';
+  import { _ } from 'svelte-i18n';
   
   import type { App } from 'app';
   import Edit from 'assets/icons/Edit.svelte';
@@ -55,7 +56,7 @@
     <div class="w-full xl:w-5/12 sm:px-5">
       <Card classes="md:hidden">
         <CardHeader>
-          <p class="text-md md:text-xl">Sheet title</p>
+          <p class="text-md md:text-xl">{$_('edit.title')}</p>
         </CardHeader>
         <div class="relative items-center flex">
           <span
@@ -73,7 +74,7 @@
 
       <Card>
         <CardHeader>
-          <p class="text-md md:text-xl">Time period</p>
+          <p class="text-md md:text-xl">{$_('edit.period')}</p>
         </CardHeader>
         <DatePicker bind:sheet />
       </Card>
@@ -82,14 +83,14 @@
         bind:transactions={sheet.incomes}
         totalSum={summary.totalIncome}
         save={viewer.save}
-        title="Income"
+        title={$_('edit.income')}
       />
 
       <TransactionList
         bind:transactions={sheet.mandatory}
         totalSum={summary.totalExpense}
         save={viewer.save}
-        title="Mandatory expenses"
+        title={$_('edit.mandatory')}
       />
 
       <Summary

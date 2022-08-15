@@ -1,0 +1,39 @@
+{
+  "login": {
+    "title": "...И пусть @accent",
+    "accent": "финансы",
+    "sub": "Не поют романсы.",
+    "cta": "Войти с аккаунтом Google"
+  },
+  "dashboard": {
+    "title": "Мой Бюджет",
+    "lastUpdated": "обновлено"
+  },
+  "menu": {
+    "dashboard": "Главная",
+    "logout": "Выйти"
+  },
+  "edit": {
+    "title": "Название",
+    "period": "Период",
+    "from": "Начало",
+    "to": "Конец",
+    "income": "Доход",
+    "mandatory": "Обязательные расходы",
+    "description": "Описание",
+    "amount": "Сумма",
+    "budget": "Бюджет на день",
+    "summary": {
+      "title": "Сводка",
+      "percentage": "Откладываем",
+      "remainder": "Остаток дохода",
+      "savings": "Накопления за период"
+    },
+    "daily": {
+      "title": "Повседневные расходы",
+      "date": "Дата",
+      "balance": "Сальдо",
+      "total": "Итого"
+    }
+  }
+}

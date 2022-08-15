@@ -2,9 +2,13 @@
   import { getContext } from 'svelte';
   import { blur } from 'svelte/transition';
   import formatDistanceToNow from 'date-fns/formatDistanceToNow/index';
+  import { _ } from 'svelte-i18n';
+  import enLocale from 'date-fns/locale/en-GB';
+  import ruLocale from 'date-fns/locale/ru';
 
   import Delete from 'assets/icons/Delete.svelte';
   import { FirebaseHelper } from 'helpers/FirebaseHelper';
+  import { lang } from 'lang/lang';
   import type { TransactionSheet, UserContext } from 'types/common';
 
   import DeleteModal from './DeleteModal.svelte';
@@ -15,6 +19,11 @@
   const { user } = getContext('session') as UserContext;
 
   let isModalOpen = false;
+
+  const locales = {
+    en: enLocale,
+    ru: ruLocale,
+  };
 
   const toggleModal = (isOpen: boolean) => {
     isModalOpen = isOpen;
@@ -48,8 +57,9 @@
       <Delete />
     </button>
     <span>
-      last updated {formatDistanceToNow(item.updatedAt, {
-        addSuffix: true
+      {$_('dashboard.lastUpdated')} {formatDistanceToNow(item.updatedAt, {
+        addSuffix: true,
+        locale: locales[$lang] || locales.en,
       })}
     </span>
   </div>

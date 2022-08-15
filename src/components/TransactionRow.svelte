@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { _ } from 'svelte-i18n';
   import { scale } from 'svelte/transition';
   import Close from '../assets/icons/Close.svelte';
   import type { Transaction } from '../types/common';
@@ -26,7 +27,7 @@
     <Input
       type="text"
       classes="border-0 w-full"
-      placeholder="Description"
+      placeholder={$_('edit.description')}
       bind:value={title}
       on:input={handleChange}
     />
@@ -36,7 +37,7 @@
       isNumber
       type="text"
       classes="border-0 w-full text-right"
-      placeholder="Amount"
+      placeholder={$_('edit.amount')}
       bind:value={maskValue}
       on:accept={onAccept}
     />
