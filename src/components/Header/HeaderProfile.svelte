@@ -20,7 +20,7 @@
       <object
         aria-label="User photo"
         class="rounded-lg w-12 h-12 overflow-hidden"
-        data={user.avatar}
+        data={user.picture}
         type="image/png"
       >
         <img class="w-full h-full" src="https://avatars.dicebear.com/api/initials/{user.name.replace(/\s/, '+')}.svg" alt="User initials">
