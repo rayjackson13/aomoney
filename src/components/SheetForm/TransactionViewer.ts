@@ -60,11 +60,16 @@ export class TransactionViewer {
     const { start, end } = this.sheet;
     if (!start || !end) return 1;
 
-    const duration = intervalToDuration({
-      start: new Date(start),
-      end: new Date(end)
-    });
-    return duration.days || 1;
+    try {
+      const duration = intervalToDuration({
+        start: new Date(start),
+        end: new Date(end)
+      });
+      return duration.days || 1;
+    } catch (e) {
+      console.error(e);
+      return 1;
+    }
   };
 
   save = async () => {

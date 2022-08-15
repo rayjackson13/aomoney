@@ -20,7 +20,7 @@
     <Row>
       <Column disabled padding classes="w-7/12 sm:w-auto">Savings percentage:</Column>
       <Column>
-        <Input classes="border-0 w-full text-right" bind:value={savingPercent} />
+        <Input isNumber classes="border-0 w-full text-right" bind:value={savingPercent} />
       </Column>
       <Column disabled padding classes="w-10 text-center">%</Column>
     </Row>

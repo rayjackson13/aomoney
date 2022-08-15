@@ -10,7 +10,7 @@
       <span class="mb-8 w-32 md:w-48 icon-shadow">
         <Logo />
       </span>
-      <div class="flex items-center justify-center flex-col px-4 py-8 sm:p-8 lg:py-16 lg:px-8 w-full md:w-auto bg-white/70 backdrop-blur-sm shadow rounded-xl mb-48">
+      <div class="flex items-center justify-center flex-col px-4 py-8 sm:p-8 lg:py-16 lg:px-8 w-full md:w-auto bg-white/70 backdrop-blur-sm shadow rounded-lg mb-48">
         <h1 class="text-lg md:text-2xl lg:text-3xl font-semibold uppercase text-center mb-6 md:mb-12">
           Don't worry about{' '}
           <span class="text-blue-500">finances</span>.

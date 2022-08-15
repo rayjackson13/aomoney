@@ -24,13 +24,22 @@
   export let dailyBudget: number;
   export let save = () => {};
 
+  const getDuration = (start: string, end: string) => {
+    try {
+      return eachDayOfInterval({
+        start: new Date(start),
+        end: new Date(end)
+      }) || [];
+    } catch (e) {
+      console.error(e);
+      return [];
+    }
+  };
+
   const getDailyExpenses = (start: string | undefined, end: string | undefined): DailyTransactions => {
     if (!start || !end) return {};
 
-    const duration = eachDayOfInterval({
-      start: new Date(start),
-      end: new Date(end)
-    });
+    const duration = getDuration(start, end);
 
     return duration.reduce((total, current) => {
       const date = format(current, DateFormat);
