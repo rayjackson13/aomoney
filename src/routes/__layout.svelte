@@ -1,9 +1,10 @@
 <script context="module" lang="ts">
   import { setContext } from "svelte";
   import type { Load } from "@sveltejs/kit";
+  import { waitLocale } from 'svelte-i18n';
 
   import type { App } from "app";
-  import { waitLocale } from 'svelte-i18n';
+  import { FirebaseHelper } from "helpers/FirebaseHelper";
   import 'lang/lang';
 
   export const preload = async () => {
@@ -11,6 +12,8 @@
   };
 
   export const load: Load = async ({ session, routeId }) => {
+    await FirebaseHelper.initialize();
+
     if (routeId !== 'auth' && !(session as App.Session).user) {
       return { redirect: 'auth', status: 302 };
     }

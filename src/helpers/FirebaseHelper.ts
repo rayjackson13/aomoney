@@ -2,22 +2,17 @@ import { initializeApp } from 'firebase/app';
 import * as Auth from 'firebase/auth';
 import * as FS from 'firebase/firestore';
 
-import type { TransactionSheet, UserInfo } from '../types/common';
-import { FirebaseConfig } from '../constants/config';
+import { FirebaseConfig } from 'constants/config';
+import type { TransactionSheet, UserInfo } from 'types/common';
 
 export class FirebaseHelper {
   private static auth: Auth.Auth;
   private static db: FS.Firestore;
-  private static ready = false;
 
   static initialize = async () => {
     initializeApp(FirebaseConfig);
     this.db = FS.getFirestore();
     this.auth = Auth.getAuth();
-    Auth.setPersistence(this.auth, Auth.browserLocalPersistence);
-
-    // todo: wait for user to load.
-    console.log('current user', this.auth.currentUser);
   };
 
   static signIn = async (callback = () => {}): Promise<UserInfo | undefined> => {
@@ -95,11 +90,16 @@ export class FirebaseHelper {
   };
 
   static getPost = async (user: UserInfo, id: string): Promise<TransactionSheet | undefined> => {
-    const ref = FS.doc(this.db, 'sheets', id);
+    const q = FS.query(
+      FS.collection(this.db, 'sheets'),
+      FS.where('id', '==', Number(id)),
+      FS.where('userId', '==', user.id)
+    );
 
     try {
-      const result = await FS.getDoc(ref);
-      return result.data() as TransactionSheet;
+      const snapshot = await FS.getDocs(q);
+      const posts = this.snapshotToArray(snapshot) as TransactionSheet[];
+      return posts[0] || undefined;
     } catch (e) {
       console.error(e);
       return undefined;
@@ -137,5 +137,3 @@ export class FirebaseHelper {
     }
   };
 }
-
-FirebaseHelper.initialize();
