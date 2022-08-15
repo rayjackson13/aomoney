@@ -26,6 +26,7 @@
 <input
   use:setType
   use:imask={maskOptions}
+  inputmode={isNumber ? 'numeric' : 'text'}
   class="{inputClass} {classes}"
   bind:value
   {placeholder}
