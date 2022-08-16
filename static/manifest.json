@@ -1,0 +1,10 @@
+{
+  "short_name": "seven-mil",
+  "name": "7Mil",
+  "start_url": "/",
+  "background_color": "#1F2937",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#1F2937",
+  "description": "Easy-to-use budget planning app."
+}
