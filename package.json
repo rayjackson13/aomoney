@@ -37,6 +37,7 @@
   "dependencies": {
     "@imask/svelte": "^6.4.2",
     "@sveltejs/adapter-static": "^1.0.0-next.39",
+    "@sveltejs/adapter-vercel": "^1.0.0-next.66",
     "@types/cookie": "^0.5.1",
     "@types/js-cookie": "^3.0.2",
     "cookie": "^0.5.0",
@@ -48,6 +49,6 @@
     "tailwindcss": "^3.1.8"
   },
   "engines": {
-    "node": "16.16.0"
+    "node": "16"
   }
 }
