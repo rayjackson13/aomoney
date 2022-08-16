@@ -7,7 +7,13 @@
   },
   "dashboard": {
     "title": "Your Budget Sheets",
-    "lastUpdated": "last updated"
+    "lastUpdated": "last updated",
+    "delete": {
+      "title": "Are you sure you want to delete this entry?",
+      "sub": "You won't be able to restore this file.",
+      "confirm": "Yes, delete it",
+      "cancel": "No, cancel"
+    }
   },
   "menu": {
     "dashboard": "Dashboard",
@@ -34,6 +40,10 @@
       "date": "Date",
       "balance": "Balance",
       "total": "Total"
+    },
+    "not-found": {
+      "title": "Sorry, this budget sheet doesn't exist or you don't have permission to access it.",
+      "cta": "Dashboard"
     }
   }
 }
