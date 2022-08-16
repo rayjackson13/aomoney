@@ -15,7 +15,7 @@
   <div class="{base} {disabled} {padding} col-span-3 sm:col-span-2 border-b-2 sm:border-b-0">
     {$_('edit.from')}:
   </div>
-  <div class="{base} col-span-9 sm:col-span-4 border-x-0 border-b-2 sm:border-b-0 sm:border-x-0">
+  <div class="{base} col-span-9 sm:col-span-4 border-l-0 border-r-0 border-b-2 sm:border-b-0 sm:border-x-0">
     <Input
       classes={inputClass}
       type="date"
@@ -26,7 +26,7 @@
   <div class="{base} {disabled} {padding} col-span-3 sm:col-span-2 border-l-0 sm:border-l-2">
     {$_('edit.to')}:
   </div>
-  <div class="{base} col-span-9 sm:col-span-4 border-x-0 sm:border-x-0">
+  <div class="{base} col-span-9 sm:col-span-4 border-l-0 sm:border-x-0">
     <Input 
       classes={inputClass}
       type="date"
