@@ -14,4 +14,4 @@ export const DefaultExtendedTransaction: ExtendedTransaction = {
 
 export const DateFormat = 'dd.MM.yyyy';
 
-export const AppName = '7Ms';
+export const AppName = '7Mil';
