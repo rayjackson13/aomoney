@@ -3,12 +3,18 @@
   import Portal from "svelte-portal";
   import { _ } from 'svelte-i18n';
 
+  import { clickOutside } from 'helpers/clickOutside';
+
   export let isOpen = false;
   export let close = () => {};
-  export let submit = () => {};
+  export let submit: () => unknown;
 
   const onKeyDown = (ev: KeyboardEvent) => {
     if (ev.key === 'Escape') close();
+  };
+
+  const onClickOutside = () => {
+    close();
   };
 </script>
 
@@ -16,8 +22,15 @@
 
 <Portal target="#modal-portal">
   {#if isOpen}
-    <div class="fixed bg-black/50 left-0 top-0 right-0 bottom-0 flex items-center justify-center text-white backdrop-blur-sm z-50" out:fade>
-      <div class="bg-gray-800 rounded-lg p-4 sm:p-8 w-full m-4 sm:m-0 sm:w-128 text-center shadow-md shadow-gray-500/10" transition:scale>
+    <div
+      class="fixed bg-black/50 left-0 top-0 right-0 bottom-0 flex items-center justify-center text-white backdrop-blur-sm z-50"
+      out:fade
+    >
+      <div
+        class="bg-gray-800 rounded-lg p-4 sm:p-8 w-full m-4 sm:m-0 sm:w-128 text-center shadow-md shadow-gray-500/10"
+        transition:scale
+        use:clickOutside={onClickOutside}
+      >
         <p class="sm:text-lg mb-2 sm:mb-0">{$_('dashboard.delete.title')}</p>
         <p class="text-sm sm:text-lg mb-6 text-gray-500">{$_('dashboard.delete.sub')}</p>
         <div class="flex justify-center flex-col sm:flex-row">

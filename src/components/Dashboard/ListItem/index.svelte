@@ -31,6 +31,7 @@
 
   const onDeletePressed = (ev: Event) => {
     ev.preventDefault();
+    ev.stopPropagation();
     toggleModal(true);
   };
 
