@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
   import { fly } from "svelte/transition";
 
   export let url = "";
-  const pageTransitionDuration = 300;
+  const pageTransitionDuration = 250;
 </script>
 
-<div class="flex-1 flex flex-col bg-white">
+<div class="relative flex-1 flex flex-col bg-white overflow-auto">
   {#key url}
     <div
       class="flex-1 flex flex-col bg-white"
