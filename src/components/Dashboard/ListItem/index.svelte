@@ -43,7 +43,7 @@
 </script>
 
 <a
-  class="text-gray-800 border-2 rounded-lg shadow-md shadow-gray-500/10 border-gray-500 transition-all hover:bg-gray-500 hover:text-white active:opacity-75"
+  class="text-gray-800 border-2 rounded-lg shadow-md shadow-gray-500/10 border-gray-500 hover:opacity-75 transition-all active:opacity-50"
   href={`sheet/${item.id}`}
   out:blur|local
 >
