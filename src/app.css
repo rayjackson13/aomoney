@@ -10,10 +10,15 @@ body {
   font-size: 16px;
   display: flex;
   flex-direction: column;
+  background-color: #1F2937;
 }
 
 #app {
   width: 100%;
+}
+
+main {
+  background-color: #fff;
 }
 
 svg {

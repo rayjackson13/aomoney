@@ -30,5 +30,5 @@
   <title>Dashboard | {AppName}</title>
 </svelte:head>
 
-<Header classes="mb-4 sm:mb-8" hasBackButton={false} />
+<Header hasBackButton={false} />
 <SheetList {list} />

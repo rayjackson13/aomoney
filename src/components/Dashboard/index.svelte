@@ -18,14 +18,16 @@
   };
 </script>
 
-<div class="container px-4 mx-auto">
-  <h1 class="my-12 text-2xl md:text-4xl font-bold text-center text-gray-800">
-    {$_('dashboard.title')}
-  </h1>
-  <Grid>
-    <NewSheetButton />
-    {#each list as item}
-      <SheetButton {item} {updateList} />
-    {/each}
-  </Grid>
-</div>
+<main class="bg-white pt-4 sm:pt-8">
+  <div class="container px-4 mx-auto">
+    <h1 class="my-12 text-2xl md:text-4xl font-bold text-center text-gray-800">
+      {$_('dashboard.title')}
+    </h1>
+    <Grid>
+      <NewSheetButton />
+      {#each list as item}
+        <SheetButton {item} {updateList} />
+      {/each}
+    </Grid>
+  </div>
+</main>

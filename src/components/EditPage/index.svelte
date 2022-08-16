@@ -9,9 +9,9 @@
   export let isNew = false;
 </script>
 
-<Header classes="mb-4 sm:mb-8" />
+<Header />
 
-<main>
+<main class="bg-white pt-4 sm:pt-8">
   {#if !sheet && !isNew}
     <SheetNotFound />
   {:else}
