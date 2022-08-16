@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getContext } from 'svelte';
+  import { scale } from 'svelte/transition';
   import Portal from 'svelte-portal';
   import debounce from 'lodash/debounce';
   import { _ } from 'svelte-i18n';
@@ -45,8 +46,9 @@
         bind:innerHTML={sheet.name}
         on:input={viewer.save}
         on:keydown={onNameKeyDown}
+        transition:scale
       />
-      <div class="absolute w-4 h-4 right-4 hidden sm:block">
+      <div class="absolute w-4 h-4 right-4 hidden sm:block" transition:scale>
         <Edit />
       </div>
     </div>

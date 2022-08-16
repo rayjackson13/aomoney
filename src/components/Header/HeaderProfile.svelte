@@ -17,6 +17,7 @@
   const toggleMenu = () => menuOpen = !menuOpen;
 </script>
 
+{#if user}
 <div class="absolute flex flex-col right-0 top-0 md:backdrop-blur-sm rounded-lg transition-all text-white {menuOpen ? 'shadow bg-gray-800' : 'md:bg-white/10 hover:md:bg-white/20'}">
   <button class="w-full overflow-hidden" on:click={toggleMenu}>
     <span class="flex items-center justify-end w-full anim-btn {menuOpen && 'anim-btn_open'}">
@@ -55,6 +56,7 @@
   </span>
   {/if}
 </div>
+{/if}
 
 <style>
   .anim-btn {

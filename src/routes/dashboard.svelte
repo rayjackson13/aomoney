@@ -3,8 +3,10 @@
 
   import type { App } from "app";
   import { FirebaseHelper } from "helpers/FirebaseHelper";
+  import { setHeaderProps } from "stores/header";
 
   export const load: Load = async ({ session, props }) => {
+    setHeaderProps({ visible: true, hasBackButton: false });
     const { user } = session as App.Session;
 
     const list = await FirebaseHelper.getPosts(user);
@@ -18,10 +20,11 @@
 </script>
 
 <script lang="ts">
-  import Header from 'components/Header/index.svelte';
   import SheetList from 'components/Dashboard/index.svelte';
   import { AppName } from 'constants/defaults';
   import type { TransactionSheet } from "types/common";
+  
+  setHeaderProps({ visible: true, hasBackButton: false });
 
   export let list: TransactionSheet[] = [];
 </script>
@@ -30,5 +33,4 @@
   <title>Dashboard | {AppName}</title>
 </svelte:head>
 
-<Header hasBackButton={false} />
 <SheetList {list} />

@@ -52,3 +52,8 @@ export type UserInfo = {
 export type UserContext = { 
   user: UserInfo;
 };
+
+export type HeaderProps = {
+  visible: boolean;
+  hasBackButton?: boolean;
+}

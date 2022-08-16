@@ -11,7 +11,7 @@
     return await waitLocale();
   };
 
-  export const load: Load = async ({ session, routeId }) => {
+  export const load: Load = async ({ session, routeId, url }) => {
     await FirebaseHelper.initialize();
 
     if (routeId !== 'auth' && !(session as App.Session).user) {
@@ -20,15 +20,19 @@
  
     return {
       props: {
-        session
+        session,
+        url
       }
     };
   };
 </script>
 
 <script lang="ts">
+  import Header from 'components/Header/index.svelte';
+  import PageTransition from "components/ui/PageTransition.svelte";
   import { AppName } from "constants/defaults";
 
+  export let url: URL;
   export let session: App.Session;
   setContext('session', session);
 </script>
@@ -37,7 +41,10 @@
   <title>{AppName}</title>
 </svelte:head>
 
-<slot />
+<Header />
+<PageTransition url={url.toString()}>
+  <slot />
+</PageTransition>
 
 <div id="modal-portal" />
 

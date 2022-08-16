@@ -1,8 +1,11 @@
 <script context="module" lang="ts">
   import type { Load } from "@sveltejs/kit";
-  import type { App } from "../app";
+
+  import type { App } from "app";
+  import { setHeaderProps } from "stores/header";
 
   export const load: Load = async ({ session, props }) => {
+    setHeaderProps({ visible: false });
     if (!(session as App.Session).user) {
       return { props };
     }
@@ -15,6 +18,8 @@
   import { FirebaseHelper } from 'helpers/FirebaseHelper';
   import LoginForm from 'components/Auth/Form.svelte';
   import { AppName } from 'constants/defaults';
+  
+  setHeaderProps({ visible: false });
 
   const onLogin = async () => {
     const callback = () => location.pathname = '/dashboard';

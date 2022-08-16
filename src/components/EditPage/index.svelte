@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Header from 'components/Header/index.svelte';
   import Main from 'components/ui/Main.svelte';
   import type { TransactionSheet } from 'types/common';
 
@@ -9,8 +8,6 @@
   export let sheet: TransactionSheet | undefined = undefined;
   export let isNew = false;
 </script>
-
-<Header />
 
 <Main>
   {#if !sheet && !isNew}
