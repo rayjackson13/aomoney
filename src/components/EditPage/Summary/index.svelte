@@ -1,12 +1,10 @@
 <script lang="ts">
   import { _ } from 'svelte-i18n';
 
-  import Card from './Card/Card.svelte';
-  import CardHeader from './Card/CardHeader.svelte';
-  import Input from './Input.svelte';
-  import Column from './Table/Column.svelte';
-  import Row from './Table/Row.svelte';
-  import Table from './Table/Table.svelte';
+  import Card from 'components/ui/Card/Card.svelte';
+  import CardHeader from 'components/ui/Card/CardHeader.svelte';
+  import Input from 'components/ui/Input.svelte';
+  import { Table, Row, Column } from 'components/ui/Table';
 
   export let savingPercent = '0';
   export let remainingIncome: number;

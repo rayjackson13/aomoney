@@ -13,7 +13,7 @@
 
 <script lang="ts">
   import { FirebaseHelper } from 'helpers/FirebaseHelper';
-  import LoginForm from 'components/Auth/LoginForm.svelte';
+  import LoginForm from 'components/Auth/Form.svelte';
   import { AppName } from 'constants/defaults';
 
   const onLogin = async () => {

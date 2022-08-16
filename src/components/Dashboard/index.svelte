@@ -3,12 +3,12 @@
   import { _ } from 'svelte-i18n';
   
   import type { App } from 'app';
+  import Grid from 'components/ui/Grid.svelte';
   import { FirebaseHelper } from 'helpers/FirebaseHelper';
   import type { TransactionSheet } from 'types/common';
 
-  import Grid from './Grid.svelte';
-  import NewSheetButton from './NewSheetButton.svelte';
-  import SheetButton from './SheetButton.svelte';
+  import NewSheetButton from './NewButton/index.svelte';
+  import SheetButton from './ListItem/index.svelte';
 
   const { user } = getContext<App.Session>('session');
   export let list: TransactionSheet[] = [];

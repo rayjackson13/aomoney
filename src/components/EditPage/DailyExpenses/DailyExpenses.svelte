@@ -12,11 +12,11 @@
   } from 'types/common';
   import { DailyBudget } from 'helpers/DailyBudget';
 
-  import Card from '../Card/Card.svelte';
-  import CardHeader from '../Card/CardHeader.svelte';
-  import Table from '../Table/Table.svelte';
-  import Row from '../Table/Row.svelte';
-  import Column from '../Table/Column.svelte';
+  import Card from 'components/ui/Card/Card.svelte';
+  import CardHeader from 'components/ui/Card/CardHeader.svelte';
+  import Table from 'components/ui/Table/Table.svelte';
+  import Row from 'components/ui/Table/Row.svelte';
+  import Column from 'components/ui/Table/Column.svelte';
   import DailyExpenseRow from './DailyExpenseRow.svelte';
 
   export let daily: DailyTransactions;

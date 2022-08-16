@@ -13,8 +13,8 @@
 </script>
 
 <script lang="ts">
-  import SheetPage from "components/SheetPage.svelte";
-import type { TransactionSheet } from "types/common";
+  import SheetPage from "components/EditPage/index.svelte";
+  import type { TransactionSheet } from "types/common";
 
   export let sheet: TransactionSheet | undefined;
 </script>

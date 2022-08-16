@@ -11,7 +11,7 @@
   import { lang } from 'lang/lang';
   import type { TransactionSheet, UserContext } from 'types/common';
 
-  import DeleteModal from './DeleteModal.svelte';
+  import DeleteModal from '../DeleteModal/index.svelte';
 
   export let item: TransactionSheet;
   export let updateList = async () => {};

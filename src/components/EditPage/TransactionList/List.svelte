@@ -1,13 +1,13 @@
 <script lang="ts">
   import Add from 'assets/icons/Add.svelte';
+  import Card from 'components/ui/Card/Card.svelte';
+  import CardHeader from 'components/ui/Card/CardHeader.svelte';
+  import Table from 'components/ui/Table/Table.svelte';
   import { DefaultTransaction } from 'constants/defaults';
   import type { Transaction } from 'types/common';
 
-  import TransactionRow from './TransactionRow.svelte';
-  import Card from './Card/Card.svelte';
-  import CardHeader from './Card/CardHeader.svelte';
-  import Table from './Table/Table.svelte';
-
+  import TransactionRow from './Row.svelte';
+  
   export let title = '';
   export let totalSum = 0;
   export let transactions: Transaction[];

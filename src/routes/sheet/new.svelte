@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SheetPage from "components/SheetPage.svelte";
+  import SheetPage from "components/EditPage/index.svelte";
   import { AppName } from "constants/defaults";
 </script>
 

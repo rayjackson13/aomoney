@@ -6,16 +6,16 @@
   
   import type { App } from 'app';
   import Edit from 'assets/icons/Edit.svelte';
-  import DatePicker from 'components/DatePicker.svelte';
-  import TransactionList from 'components/TransactionList.svelte';
-  import Card from 'components/Card/Card.svelte';
-  import CardHeader from 'components/Card/CardHeader.svelte';
-  import Summary from 'components/Summary.svelte';
-  import DailyExpenses from 'components/DailyExpenses/DailyExpenses.svelte';
+  import Summary from 'components/EditPage/Summary/index.svelte';
+  import TransactionList from 'components/EditPage/TransactionList/List.svelte';
+  import Card from 'components/ui/Card/Card.svelte';
+  import CardHeader from 'components/ui/Card/CardHeader.svelte';
   import { AppName } from 'constants/defaults';
   import type { TransactionSheet } from 'types/common';
-
-  import { TransactionViewer } from './TransactionViewer';
+  
+  import DatePicker from '../DatePicker/index.svelte';
+  import DailyExpenses from '../DailyExpenses/DailyExpenses.svelte';
+  import { TransactionViewer } from '../../../helpers/TransactionViewer';
 
   export let data: TransactionSheet | undefined;
 

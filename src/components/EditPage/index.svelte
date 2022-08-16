@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Header from 'components/Header/Header.svelte';
+  import Header from 'components/Header/index.svelte';
   import type { TransactionSheet } from 'types/common';
 
-  import Form from './SheetForm/index.svelte';
-  import SheetNotFound from './SheetNotFound.svelte';
+  import Form from './Form/index.svelte';
+  import SheetNotFound from './NotFound/index.svelte';
 
   export let sheet: TransactionSheet | undefined = undefined;
   export let isNew = false;

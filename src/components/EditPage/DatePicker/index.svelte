@@ -1,10 +1,10 @@
 <script lang="ts">
   import { _ } from 'svelte-i18n';
 
+  import Input from 'components/ui/Input.svelte';
   import { TableColumnClasses } from 'constants/classes';
   import type { SheetDraft } from 'types/common';
 
-  import Input from './Input.svelte';
 
   export let sheet: SheetDraft;
   const inputClass = 'border-0 w-full';

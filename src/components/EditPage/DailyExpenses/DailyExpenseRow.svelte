@@ -1,11 +1,10 @@
 <script lang="ts">
-  import type { ExtendedTransaction } from '../../types/common';
-  import Add from '../../assets/icons/Add.svelte';
-  import Close from '../../assets/icons/Close.svelte';
+  import Add from 'assets/icons/Add.svelte';
+  import Close from 'assets/icons/Close.svelte';
+  import type { ExtendedTransaction } from 'types/common';
 
-  import Column from '../Table/Column.svelte';
-  import Row from '../Table/Row.svelte';
-  import Input from '../Input.svelte';
+  import { Row, Column } from 'components/ui/Table';
+  import Input from 'components/ui/Input.svelte';
 
   export let item: ExtendedTransaction;
   export let date: string;
@@ -42,23 +41,17 @@
     {Number(Math.round(item.balance) + '').toLocaleString()}
   </Column>
   <Column classes="w-10">
-    {#if !item.additive}
-      <button
-        type="button"
-        class="p-2 text-gray-400 hover:opacity-75 active:opacity-50 transition-all button-icon"
-        on:click={addRow}
-      >
+    <button
+      type="button"
+      class="p-2 text-gray-400 hover:opacity-75 active:opacity-50 transition-all button-icon"
+      on:click={!item.additive ? addRow : deleteRow}
+    >
+      {#if !item.additive}
         <Add />
-      </button>
-    {:else}
-      <button
-        type="button"
-        class="p-2 text-gray-400 hover:opacity-75 active:opacity-50 transition-all button-icon"
-        on:click={deleteRow}
-      >
+      {:else}
         <Close />
-      </button>
-    {/if}
+      {/if}
+    </button>
   </Column>
 </Row>
 

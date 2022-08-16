@@ -18,8 +18,8 @@
 </script>
 
 <script lang="ts">
-  import Header from 'components/Header/Header.svelte';
-  import SheetList from 'components/SheetList.svelte';
+  import Header from 'components/Header/index.svelte';
+  import SheetList from 'components/Dashboard/index.svelte';
   import { AppName } from 'constants/defaults';
   import type { TransactionSheet } from "types/common";
 

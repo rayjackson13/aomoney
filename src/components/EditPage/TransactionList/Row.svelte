@@ -1,10 +1,11 @@
 <script lang="ts">
   import { _ } from 'svelte-i18n';
   import { scale } from 'svelte/transition';
-  import Close from '../assets/icons/Close.svelte';
-  import type { Transaction } from '../types/common';
-  import Column from './Table/Column.svelte';
-  import Input from './Input.svelte';
+
+  import Close from 'assets/icons/Close.svelte';
+  import { Column } from 'components/ui/Table';
+  import Input from 'components/ui/Input.svelte';
+  import type { Transaction } from 'types/common';
 
   export let id: Transaction['id'];
   export let title: Transaction['title'];
