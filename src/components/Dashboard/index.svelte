@@ -4,6 +4,7 @@
   
   import type { App } from 'app';
   import Grid from 'components/ui/Grid.svelte';
+  import Main from 'components/ui/Main.svelte';
   import { FirebaseHelper } from 'helpers/FirebaseHelper';
   import type { TransactionSheet } from 'types/common';
 
@@ -18,7 +19,7 @@
   };
 </script>
 
-<main class="bg-white pt-4 sm:pt-8">
+<Main>
   <div class="container px-4 mx-auto">
     <h1 class="my-12 text-2xl md:text-4xl font-bold text-center text-gray-800">
       {$_('dashboard.title')}
@@ -30,4 +31,4 @@
       {/each}
     </Grid>
   </div>
-</main>
+</Main>

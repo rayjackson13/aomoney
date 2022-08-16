@@ -1,5 +1,6 @@
 <script lang="ts">
   import Header from 'components/Header/index.svelte';
+  import Main from 'components/ui/Main.svelte';
   import type { TransactionSheet } from 'types/common';
 
   import Form from './Form/index.svelte';
@@ -11,10 +12,10 @@
 
 <Header />
 
-<main class="bg-white pt-4 sm:pt-8">
+<Main>
   {#if !sheet && !isNew}
     <SheetNotFound />
   {:else}
     <Form data={sheet} />
   {/if}
-</main>
+</Main>
