@@ -5,7 +5,7 @@
   const pageTransitionDuration = 250;
 </script>
 
-<div class="relative flex-1 flex flex-col bg-white overflow-auto">
+<div class="relative flex-1 flex flex-col bg-white">
   {#key url}
     <div
       class="flex-1 flex flex-col bg-white"

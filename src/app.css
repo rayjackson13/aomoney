@@ -10,13 +10,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #1F2937;
-  height: 100vh;
-}
-
-html, body {
-  position: fixed;
-  overflow: hidden;
-  width: 100%;
+  min-height: 100vh;
 }
 
 #app {
