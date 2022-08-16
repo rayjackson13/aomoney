@@ -3,8 +3,8 @@
   import { blur } from 'svelte/transition';
   import formatDistanceToNow from 'date-fns/formatDistanceToNow/index';
   import { _ } from 'svelte-i18n';
-  import enLocale from 'date-fns/locale/en-GB';
-  import ruLocale from 'date-fns/locale/ru';
+  import enLocale from 'date-fns/locale/en-GB/index';
+  import ruLocale from 'date-fns/locale/ru/index';
 
   import Delete from 'assets/icons/Delete.svelte';
   import { FirebaseHelper } from 'helpers/FirebaseHelper';
