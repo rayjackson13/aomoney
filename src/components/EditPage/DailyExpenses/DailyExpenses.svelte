@@ -23,6 +23,7 @@
   export let startDate: string | undefined;
   export let endDate: string | undefined;
   export let dailyBudget: number;
+  export let remainingIncome: number;
   export let save = () => {};
 
   const getDuration = (start: string, end: string) => {
@@ -56,7 +57,9 @@
   };
 
   $: daily = getDailyExpenses(startDate, endDate);
-  $: total = { amount: 0, balance: 0 } as DailyTotal;
+  $: total = { amount: 0, balance: 0, remainder: 0 } as DailyTotal;
+
+  console.log(daily);
 
   const getMaxId = (date: string) => {
     const ids = daily[date].map(val => val.id);
@@ -94,7 +97,7 @@
 
   $: calculateBudget = () => {
     const endDate = format(getEndDate(), DateFormat);
-    daily = DailyBudget.calculate(daily, dailyBudget);
+    daily = DailyBudget.calculate(daily, dailyBudget, remainingIncome);
     total = DailyBudget.getTotal(daily, endDate);
   };
 
@@ -105,14 +108,14 @@
   <CardHeader>
     <p class="text-md md:text-xl">{$_('edit.daily.title')}</p>
   </CardHeader>
-  <Table scrollable>
+  <Table>
     <tbody class="table w-full">
       <Row>
         <Column disabled padding>{$_('edit.daily.date')}</Column>
         <Column disabled padding>{$_('edit.description')}</Column>
         <Column disabled padding>{$_('edit.amount')}</Column>
-        <Column disabled padding>{$_('edit.budget')}</Column>
         <Column disabled padding>{$_('edit.daily.balance')}</Column>
+        <Column disabled padding>{$_('edit.budget')}</Column>
         <Column disabled padding />
       </Row>
       {#each Object.keys(daily) as row (row)}
@@ -133,8 +136,8 @@
           >{Math.round(total.amount).toLocaleString()}</Column
         >
         <Column padding classes="text-right" />
-        <Column padding classes="text-right {total.balance < 0 && 'text-red-700'}"
-          >{Math.round(total.balance).toLocaleString()}</Column
+        <Column padding classes="text-right {total.remainder < 0 && 'text-red-700'}"
+          >{Math.round(total.remainder).toLocaleString()}</Column
         >
         <Column padding />
       </Row>

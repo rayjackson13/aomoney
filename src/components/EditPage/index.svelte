@@ -7,6 +7,8 @@
 
   export let sheet: TransactionSheet | undefined = undefined;
   export let isNew = false;
+
+  console.log('sheet', sheet);
 </script>
 
 <Main>

@@ -109,6 +109,7 @@
         bind:startDate={sheet.start}
         bind:endDate={sheet.end}
         dailyBudget={summary.dailyBudget}
+        remainingIncome={summary.remainingIncome}
         save={viewer.save}
       />
     </div>

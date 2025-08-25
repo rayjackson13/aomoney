@@ -34,11 +34,11 @@
       on:accept={onAccept}
     />
   </Column>
-  <Column padding classes="text-right {Math.round(item.budget) < 0 && 'text-red-700'}">
-    {Number(Math.round(item.budget) + '').toLocaleString()}
-  </Column>
   <Column padding classes="text-right {Math.round(item.balance) < 0 && 'text-red-700'}">
     {Number(Math.round(item.balance) + '').toLocaleString()}
+  </Column>
+  <Column padding classes="text-right {Math.round(item.remainder) < 0 && 'text-red-700'}">
+    {Number(Math.round(item.remainder) + '').toLocaleString()}
   </Column>
   <Column classes="w-10">
     <button

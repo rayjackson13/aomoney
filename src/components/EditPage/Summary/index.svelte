@@ -32,7 +32,7 @@
     <Row>
       <Column disabled padding classes="w-7/12 sm:w-auto">{$_('edit.budget')}:</Column>
       <Column disabled padding classes="text-right"
-        >{Math.round(dailyBudget).toLocaleString()}</Column
+        >{Math.floor(dailyBudget).toLocaleString()}</Column
       >
       <Column disabled padding classes="w-10 text-center">₽</Column>
     </Row>

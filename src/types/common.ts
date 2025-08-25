@@ -12,6 +12,7 @@ export type Transaction = {
 export type ExtendedTransaction = Transaction & {
   budget: number;
   balance: number;
+  remainder: number;
   additive?: boolean;
 };
 
@@ -39,6 +40,7 @@ export type SheetDraft = Omit<TransactionSheet, 'id'> & {
 export type DailyTotal = {
   amount: number;
   balance: number;
+  remainder: number;
 };
 
 export type UserInfo = {

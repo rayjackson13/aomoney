@@ -2,5 +2,8 @@
   "i18n-ally.localesPaths": [
     "src/lang"
   ],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.keystyle": "nested",
+  "[svelte]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  }
 }

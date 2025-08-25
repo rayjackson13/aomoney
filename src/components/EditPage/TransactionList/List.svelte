@@ -19,7 +19,8 @@
 
   const getMaxId = () => {
     const ids = transactions.map(val => val.id);
-    return Math.max(...ids);
+    
+    return ids.length ? Math.max(...ids) : 0;
   };
 
   const addRow = () => {
