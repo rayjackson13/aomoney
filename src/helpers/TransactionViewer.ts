@@ -26,7 +26,7 @@ export class TransactionViewer {
     const savingsAmount = (totalIncome / 100) * Number(savingPercent);
     const totalExpense = this.calculateTotal(mandatory) + savingsAmount;
     const remainingIncome = totalIncome - totalExpense;
-    const dailyBudget = remainingIncome / (this.getPeriodDuration() + 1);
+    const dailyBudget = Math.floor(remainingIncome / (this.getPeriodDuration() + 1));
 
     return { totalIncome, totalExpense, savingsAmount, remainingIncome, dailyBudget };
   }
